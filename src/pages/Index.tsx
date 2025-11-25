@@ -41,12 +41,12 @@ const Index = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="gradient-hero text-primary-foreground py-20">
+      <section className="gradient-hero py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 drop-shadow-lg">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg">
             Excel in Your JC Studies with Expert Tuition
           </h1>
-          <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto drop-shadow-md">
+          <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto text-white/95 drop-shadow-md">
             Premium tuition for POA, MOB, Mathematics, and Economics. Ask questions online, track your progress, and achieve academic excellence with Singapore's top tutors.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
