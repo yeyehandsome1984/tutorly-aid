@@ -1,15 +1,32 @@
 import { NavLink } from "@/components/NavLink";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [user, setUser] = useState<any>(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      setUser(user);
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
 
   const navLinks = [
     { to: "/", label: "Home" },
     { to: "/tutors", label: "Tutors" },
     { to: "/subjects", label: "Subjects" },
+    { to: "/questions", label: "Q&A" },
   ];
 
   return (
@@ -33,9 +50,15 @@ const Navigation = () => {
                 {link.label}
               </NavLink>
             ))}
-            <Button variant="secondary" size="sm">
-              Student Login
-            </Button>
+            {user ? (
+              <Button variant="secondary" size="sm" onClick={() => navigate("/questions")}>
+                My Account
+              </Button>
+            ) : (
+              <Button variant="secondary" size="sm" onClick={() => navigate("/auth")}>
+                Login
+              </Button>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -63,9 +86,15 @@ const Navigation = () => {
                   {link.label}
                 </NavLink>
               ))}
-              <Button variant="secondary" size="sm" className="w-full">
-                Student Login
-              </Button>
+              {user ? (
+                <Button variant="secondary" size="sm" className="w-full" onClick={() => navigate("/questions")}>
+                  My Account
+                </Button>
+              ) : (
+                <Button variant="secondary" size="sm" className="w-full" onClick={() => navigate("/auth")}>
+                  Login
+                </Button>
+              )}
             </div>
           </div>
         )}
