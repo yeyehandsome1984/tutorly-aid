@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Navigation from "@/components/Navigation";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { supabase } from "@/integrations/supabase/client";
@@ -64,7 +63,6 @@ const Tutors = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-background">
-        <Navigation />
         <main className="container mx-auto px-4 py-12">
           <div className="text-center">Loading...</div>
         </main>
@@ -74,8 +72,6 @@ const Tutors = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
-      
       <main className="container mx-auto px-4 py-12">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Expert Tutors</h1>
