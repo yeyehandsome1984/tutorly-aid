@@ -53,10 +53,10 @@ const Index = () => {
             <Button size="lg" variant="secondary">
               Book Trial Lesson
             </Button>
-            <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10">
+            <Button size="lg" variant="hero">
               Student Login
             </Button>
-            <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10">
+            <Button size="lg" variant="hero">
               <Phone className="mr-2 h-4 w-4" />
               WhatsApp Us
             </Button>
@@ -149,19 +149,19 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="gradient-gold py-16">
+      <section className="gradient-red py-16">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-accent-foreground">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-foreground">
             Ready to Excel in Your Studies?
           </h2>
-          <p className="text-lg mb-8 max-w-2xl mx-auto text-accent-foreground/90">
+          <p className="text-lg mb-8 max-w-2xl mx-auto text-primary-foreground/90">
             Join hundreds of students who have improved their grades with our expert tuition
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" variant="default">
               Book Your Free Trial
             </Button>
-            <Button size="lg" variant="outline" className="border-accent-foreground text-accent-foreground hover:bg-accent-foreground/10">
+            <Button size="lg" variant="hero">
               Contact Us
             </Button>
           </div>
