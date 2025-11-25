@@ -154,8 +154,13 @@ const TutorSubjectsManagement = () => {
 
   return (
     <div>
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold">Tutor-Subject Assignments</h1>
+      <div className="flex justify-between items-center mb-4">
+        <div>
+          <h1 className="text-3xl font-bold">Tutor-Subject Assignments</h1>
+          <p className="text-sm text-muted-foreground mt-2">
+            Click the trash icon on any subject badge to remove it. Use "Add Assignment" to assign subjects to tutors.
+          </p>
+        </div>
         <Button onClick={handleOpenDialog}>
           <Plus className="mr-2 h-4 w-4" />
           Add Assignment
@@ -186,10 +191,11 @@ const TutorSubjectsManagement = () => {
                             <Button
                               variant="ghost"
                               size="sm"
-                              className="h-5 w-5 p-0 hover:bg-destructive hover:text-destructive-foreground"
+                              className="h-6 w-6 p-0 hover:bg-destructive hover:text-destructive-foreground rounded-full"
                               onClick={() => handleDelete(assignment.id)}
+                              title="Remove this subject from tutor"
                             >
-                              <Trash2 className="h-3 w-3" />
+                              <Trash2 className="h-3.5 w-3.5" />
                             </Button>
                           </Badge>
                         ))}
