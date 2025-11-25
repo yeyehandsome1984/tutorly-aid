@@ -1,35 +1,77 @@
+import { useEffect, useState } from "react";
 import Navigation from "@/components/Navigation";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { supabase } from "@/integrations/supabase/client";
 
-const tutors = [
-  {
-    id: 1,
-    name: "Ye Yichen",
-    subjects: ["Principles of Accounting (POA)", "Management of Business (MOB)"],
-    introduction: "Experienced educator specializing in Principles of Accounting and Management of Business with over 8 years of teaching experience. Known for simplifying complex concepts and helping students achieve distinction grades."
-  },
-  {
-    id: 2,
-    name: "Denise",
-    subjects: ["Mathematics", "Principles of Accounting (POA)"],
-    introduction: "Passionate mathematics and accounting tutor dedicated to building strong foundational skills. Focuses on problem-solving techniques and exam strategies to help students excel in their A-Level examinations."
-  },
-  {
-    id: 3,
-    name: "Ruvina",
-    subjects: ["Economics", "Principles of Accounting (POA)"],
-    introduction: "Dynamic tutor with expertise in Economics and Accounting. Emphasizes real-world applications and critical thinking to make learning engaging and relevant for JC students."
-  },
-  {
-    id: 4,
-    name: "Jiayi",
-    subjects: ["Mathematics"],
-    introduction: "Mathematics specialist with a track record of helping students improve from failing grades to consistent A's. Uses innovative teaching methods and personalized attention to address individual learning gaps."
-  },
-];
+interface Tutor {
+  id: string;
+  name: string;
+  introduction: string;
+}
+
+interface Subject {
+  id: string;
+  name: string;
+}
+
+interface TutorWithSubjects extends Tutor {
+  subjects: Subject[];
+}
 
 const Tutors = () => {
+  const [tutors, setTutors] = useState<TutorWithSubjects[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchTutors();
+  }, []);
+
+  const fetchTutors = async () => {
+    try {
+      const { data: tutorsData, error: tutorsError } = await supabase
+        .from("tutors")
+        .select("*")
+        .order("name");
+
+      if (tutorsError) throw tutorsError;
+
+      const tutorsWithSubjects = await Promise.all(
+        (tutorsData || []).map(async (tutor) => {
+          const { data: subjectsData } = await supabase
+            .from("tutor_subjects")
+            .select("subject_id, subjects(id, name)")
+            .eq("tutor_id", tutor.id);
+
+          const subjects =
+            subjectsData?.map((ts: any) => ({
+              id: ts.subjects.id,
+              name: ts.subjects.name,
+            })) || [];
+
+          return { ...tutor, subjects };
+        })
+      );
+
+      setTutors(tutorsWithSubjects);
+    } catch (error) {
+      console.error("Error fetching tutors:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Navigation />
+        <main className="container mx-auto px-4 py-12">
+          <div className="text-center">Loading...</div>
+        </main>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -53,9 +95,9 @@ const Tutors = () => {
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2">
-                  {tutor.subjects.map((subject, idx) => (
-                    <Badge key={idx} variant="secondary" className="text-sm">
-                      {subject}
+                  {tutor.subjects.map((subject) => (
+                    <Badge key={subject.id} variant="secondary" className="text-sm">
+                      {subject.name}
                     </Badge>
                   ))}
                 </div>
