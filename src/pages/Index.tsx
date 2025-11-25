@@ -21,11 +21,7 @@ const Index = () => {
 
   const fetchTutors = async () => {
     try {
-      const { data: tutorsData } = await supabase
-        .from("tutors")
-        .select("*")
-        .order("name")
-        .limit(4);
+      const { data: tutorsData } = await supabase.from("tutors").select("*").order("name").limit(4);
 
       const tutorsWithSubjects = await Promise.all(
         (tutorsData || []).map(async (tutor) => {
@@ -34,15 +30,16 @@ const Index = () => {
             .select("subjects(name)")
             .eq("tutor_id", tutor.id);
 
-          const subjects = subjectsData?.map((ts: any) => {
-            const name = ts.subjects.name;
-            if (name === "Principles of Accounting (POA)") return "POA";
-            if (name === "Management of Business (MOB)") return "MOB";
-            return name;
-          }) || [];
+          const subjects =
+            subjectsData?.map((ts: any) => {
+              const name = ts.subjects.name;
+              if (name === "Principles of Accounting (POA)") return "POA";
+              if (name === "Management of Business (MOB)") return "MOB";
+              return name;
+            }) || [];
 
           return { id: tutor.id, name: tutor.name, subjects };
-        })
+        }),
       );
 
       setTutors(tutorsWithSubjects);
@@ -80,10 +77,11 @@ const Index = () => {
       <section className="gradient-hero py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg">
-            Excel in Your JC Studies with Expert Tuition
+            Excel in Your JC Studies with Excellent Tuition Team
           </h1>
           <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto text-white/95 drop-shadow-md">
-            Premium tuition for POA, MOB, Mathematics, and Economics. Ask questions online, track your progress, and achieve academic excellence with Singapore's top tutors.
+            Premium tuition for POA, MOB, Mathematics, and Economics. Ask questions online, track your progress, and
+            achieve academic excellence with dedicated team of tutors.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" variant="secondary">
@@ -103,9 +101,7 @@ const Index = () => {
       {/* Why Choose Us */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-            Why Choose MI Tuition?
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Why Choose MI Tuition?</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((feature, idx) => (
               <Card key={idx} className="shadow-card text-center">
@@ -116,9 +112,7 @@ const Index = () => {
                   <CardTitle className="text-xl">{feature.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-base">
-                    {feature.description}
-                  </CardDescription>
+                  <CardDescription className="text-base">{feature.description}</CardDescription>
                 </CardContent>
               </Card>
             ))}
@@ -129,9 +123,7 @@ const Index = () => {
       {/* Tutors Preview */}
       <section className="py-16 bg-muted">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-            Meet Our Tutors
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Meet Our Tutors</h2>
           <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
             Our experienced educators bring years of teaching expertise and proven results
           </p>
@@ -164,9 +156,7 @@ const Index = () => {
       {/* Subjects Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-            Subjects We Offer
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Subjects We Offer</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {["Principles of Accounting", "Management of Business", "Mathematics", "Economics"].map((subject, idx) => (
               <Card key={idx} className="shadow-card hover:shadow-elevated transition-shadow">
