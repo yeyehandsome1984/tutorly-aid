@@ -13,10 +13,17 @@ const AdminDashboard = () => {
     },
     {
       title: "Subjects",
-      description: "Manage subjects and assign tutors",
+      description: "Manage subjects and keywords",
       icon: BookOpen,
       link: "/admin/subjects",
       color: "text-green-500",
+    },
+    {
+      title: "Tutor-Subject Assignments",
+      description: "Assign subjects to tutors",
+      icon: Users,
+      link: "/admin/tutor-subjects",
+      color: "text-cyan-500",
     },
     {
       title: "Topics",
