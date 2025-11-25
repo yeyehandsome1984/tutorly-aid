@@ -21,14 +21,14 @@ All colors MUST be HSL.
     --primary: 207 100% 21.8%; /* Deep Blue #003A70 */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 45 100% 58.2%; /* Gold #FFC72C */
-    --secondary-foreground: 207 100% 21.8%;
+    --secondary: 358 80% 51%; /* MI Red #E31E24 */
+    --secondary-foreground: 0 0% 100%;
 
     --muted: 0 0% 96.3%;
     --muted-foreground: 207 40% 45%;
 
-    --accent: 45 100% 58.2%; /* Gold accent */
-    --accent-foreground: 207 100% 21.8%;
+    --accent: 358 80% 51%; /* MI Red accent */
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
@@ -41,7 +41,7 @@ All colors MUST be HSL.
 
     /* Custom design tokens */
     --gradient-hero: linear-gradient(135deg, hsl(207 100% 21.8%) 0%, hsl(207 100% 28%) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(45 100% 58.2%) 0%, hsl(45 100% 65%) 100%);
+    --gradient-red: linear-gradient(135deg, hsl(358 80% 51%) 0%, hsl(358 80% 58%) 100%);
     --shadow-card: 0 4px 6px -1px hsl(207 100% 21.8% / 0.1), 0 2px 4px -2px hsl(207 100% 21.8% / 0.1);
     --shadow-elevated: 0 10px 15px -3px hsl(207 100% 21.8% / 0.1), 0 4px 6px -4px hsl(207 100% 21.8% / 0.1);
 
@@ -65,8 +65,8 @@ All colors MUST be HSL.
     --popover: 207 90% 12%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 45 100% 58.2%;
-    --primary-foreground: 207 100% 21.8%;
+    --primary: 358 80% 51%;
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 207 50% 20%;
     --secondary-foreground: 0 0% 98%;
@@ -74,8 +74,8 @@ All colors MUST be HSL.
     --muted: 207 50% 15%;
     --muted-foreground: 207 20% 70%;
 
-    --accent: 45 100% 58.2%;
-    --accent-foreground: 207 100% 21.8%;
+    --accent: 358 80% 51%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
@@ -86,12 +86,12 @@ All colors MUST be HSL.
 
     --sidebar-background: 207 100% 8%;
     --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 45 100% 58.2%;
-    --sidebar-primary-foreground: 207 100% 21.8%;
+    --sidebar-primary: 358 80% 51%;
+    --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 207 50% 15%;
     --sidebar-accent-foreground: 0 0% 95%;
     --sidebar-border: 207 40% 25%;
-    --sidebar-ring: 45 100% 58.2%;
+    --sidebar-ring: 358 80% 51%;
   }
 }
 
@@ -115,8 +115,8 @@ All colors MUST be HSL.
     background: var(--gradient-hero);
   }
   
-  .gradient-gold {
-    background: var(--gradient-gold);
+  .gradient-red {
+    background: var(--gradient-red);
   }
 
   .shadow-card {
