@@ -1,11 +1,57 @@
+import { useEffect, useState } from "react";
 import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { BookOpen, Users, MessageSquare, TrendingUp, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
+
+interface TutorPreview {
+  id: string;
+  name: string;
+  subjects: string[];
+}
 
 const Index = () => {
+  const [tutors, setTutors] = useState<TutorPreview[]>([]);
+
+  useEffect(() => {
+    fetchTutors();
+  }, []);
+
+  const fetchTutors = async () => {
+    try {
+      const { data: tutorsData } = await supabase
+        .from("tutors")
+        .select("*")
+        .order("name")
+        .limit(4);
+
+      const tutorsWithSubjects = await Promise.all(
+        (tutorsData || []).map(async (tutor) => {
+          const { data: subjectsData } = await supabase
+            .from("tutor_subjects")
+            .select("subjects(name)")
+            .eq("tutor_id", tutor.id);
+
+          const subjects = subjectsData?.map((ts: any) => {
+            const name = ts.subjects.name;
+            if (name === "Principles of Accounting (POA)") return "POA";
+            if (name === "Management of Business (MOB)") return "MOB";
+            return name;
+          }) || [];
+
+          return { id: tutor.id, name: tutor.name, subjects };
+        })
+      );
+
+      setTutors(tutorsWithSubjects);
+    } catch (error) {
+      console.error("Error fetching tutors:", error);
+    }
+  };
+
   const features = [
     {
       icon: BookOpen,
@@ -27,13 +73,6 @@ const Index = () => {
       title: "Small Class Sizes",
       description: "Personalized attention in focused learning environments",
     },
-  ];
-
-  const tutors = [
-    { name: "Ye Yichen", subjects: ["POA", "MOB"], introduction: "Expert in Accounting and Business Management" },
-    { name: "Denise", subjects: ["Mathematics", "POA"], introduction: "Specialist in Math and Accounting" },
-    { name: "Ruvina", subjects: ["Economics", "POA"], introduction: "Economics and Accounting Professional" },
-    { name: "Jiayi", subjects: ["Mathematics"], introduction: "Mathematics Excellence Coach" },
   ];
 
   return (
@@ -100,8 +139,8 @@ const Index = () => {
             Our experienced educators bring years of teaching expertise and proven results
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-            {tutors.map((tutor, idx) => (
-              <Card key={idx} className="shadow-card">
+            {tutors.map((tutor) => (
+              <Card key={tutor.id} className="shadow-card">
                 <CardHeader>
                   <CardTitle className="text-xl">{tutor.name}</CardTitle>
                 </CardHeader>

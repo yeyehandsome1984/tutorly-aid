@@ -1,34 +1,50 @@
+import { useEffect, useState } from "react";
 import Navigation from "@/components/Navigation";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { supabase } from "@/integrations/supabase/client";
 
-const subjects = [
-  {
-    id: 1,
-    name: "Principles of Accounting (POA)",
-    description: "Master accounting fundamentals, financial statements, and business transactions with expert guidance.",
-    keywords: "POA tuition Singapore, accounting tutor, JC accounting",
-  },
-  {
-    id: 2,
-    name: "Management of Business (MOB)",
-    description: "Understand business management concepts, organizational strategies, and entrepreneurship principles.",
-    keywords: "MOB tuition, business management tutor Singapore",
-  },
-  {
-    id: 3,
-    name: "Mathematics",
-    description: "Excel in mathematical concepts from algebra to calculus with personalized coaching and practice.",
-    keywords: "JC math tutor Singapore, mathematics tuition",
-  },
-  {
-    id: 4,
-    name: "Economics",
-    description: "Grasp micro and macroeconomics theories, market dynamics, and economic policies effectively.",
-    keywords: "economics tutor Singapore, JC economics tuition",
-  },
-];
+interface Subject {
+  id: string;
+  name: string;
+  description: string | null;
+  keywords: string[] | null;
+}
 
 const Subjects = () => {
+  const [subjects, setSubjects] = useState<Subject[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchSubjects();
+  }, []);
+
+  const fetchSubjects = async () => {
+    try {
+      const { data, error } = await supabase
+        .from("subjects")
+        .select("*")
+        .order("name");
+
+      if (error) throw error;
+      setSubjects(data || []);
+    } catch (error) {
+      console.error("Error fetching subjects:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Navigation />
+        <main className="container mx-auto px-4 py-12">
+          <div className="text-center">Loading...</div>
+        </main>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -51,9 +67,11 @@ const Subjects = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-xs text-muted-foreground italic">
-                  Keywords: {subject.keywords}
-                </p>
+                {subject.keywords && subject.keywords.length > 0 && (
+                  <p className="text-xs text-muted-foreground italic">
+                    Keywords: {subject.keywords.join(", ")}
+                  </p>
+                )}
               </CardContent>
             </Card>
           ))}
