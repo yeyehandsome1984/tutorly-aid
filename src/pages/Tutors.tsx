@@ -1,5 +1,5 @@
 import Navigation from "@/components/Navigation";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
 const tutors = [
@@ -7,21 +7,25 @@ const tutors = [
     id: 1,
     name: "Ye Yichen",
     subjects: ["Principles of Accounting (POA)", "Management of Business (MOB)"],
+    introduction: "Experienced educator specializing in Principles of Accounting and Management of Business with over 8 years of teaching experience. Known for simplifying complex concepts and helping students achieve distinction grades."
   },
   {
     id: 2,
     name: "Denise",
     subjects: ["Mathematics", "Principles of Accounting (POA)"],
+    introduction: "Passionate mathematics and accounting tutor dedicated to building strong foundational skills. Focuses on problem-solving techniques and exam strategies to help students excel in their A-Level examinations."
   },
   {
     id: 3,
     name: "Ruvina",
     subjects: ["Economics", "Principles of Accounting (POA)"],
+    introduction: "Dynamic tutor with expertise in Economics and Accounting. Emphasizes real-world applications and critical thinking to make learning engaging and relevant for JC students."
   },
   {
     id: 4,
     name: "Jiayi",
     subjects: ["Mathematics"],
+    introduction: "Mathematics specialist with a track record of helping students improve from failing grades to consistent A's. Uses innovative teaching methods and personalized attention to address individual learning gaps."
   },
 ];
 
@@ -43,6 +47,9 @@ const Tutors = () => {
             <Card key={tutor.id} className="shadow-card hover:shadow-elevated transition-shadow">
               <CardHeader>
                 <CardTitle className="text-2xl">{tutor.name}</CardTitle>
+                <CardDescription className="text-base mt-2 leading-relaxed">
+                  {tutor.introduction}
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2">
