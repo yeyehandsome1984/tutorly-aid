@@ -13,6 +13,7 @@ import TutorsManagement from "./pages/admin/TutorsManagement";
 import SubjectsManagement from "./pages/admin/SubjectsManagement";
 import TopicsManagement from "./pages/admin/TopicsManagement";
 import ContentManagement from "./pages/admin/ContentManagement";
+import TutorSubjectsManagement from "./pages/admin/TutorSubjectsManagement";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,6 +35,7 @@ const App = () => (
             <Route path="subjects" element={<SubjectsManagement />} />
             <Route path="topics" element={<TopicsManagement />} />
             <Route path="content" element={<ContentManagement />} />
+            <Route path="tutor-subjects" element={<TutorSubjectsManagement />} />
           </Route>
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
