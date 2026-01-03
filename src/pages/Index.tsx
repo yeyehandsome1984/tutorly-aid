@@ -82,22 +82,22 @@ const Index = () => {
     {
       icon: BookOpen,
       title: "Expert Tutors",
-      description: "Learn from experienced educators specializing in JC subjects",
+      description: "Learn from experienced educators or top students from respective subjects",
     },
     {
       icon: MessageSquare,
-      title: "Ask Questions Online",
-      description: "Get your academic doubts resolved quickly through our platform",
+      title: "Responsive to questions",
+      description: "Tutors are responsive to students question through whatapps, calls or other channels",
     },
     {
       icon: TrendingUp,
-      title: "Track Progress",
-      description: "Monitor your learning journey with detailed progress tracking",
+      title: "complete commerce stream",
+      description: "We are familiar with syllabus in commerce stream across POA, MOB and Econs",
     },
     {
       icon: Users,
-      title: "Small Class Sizes",
-      description: "Personalized attention in focused learning environments",
+      title: "Customised Note",
+      description: "We made our own note to tackle students pain points, we also have complete material from MI",
     },
   ];
 
