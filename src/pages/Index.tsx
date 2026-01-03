@@ -10,6 +10,21 @@ import FAQSchema from "@/components/FAQSchema";
 
 const faqs = [
   {
+    question: "What is the background of MI Tuition tutors?",
+    answer:
+      "Our tutors are ex-MOE teachers and former MI (Millennia Institute) students who excelled in their respective subjects. With first-hand experience of the JC commerce stream curriculum, we understand exactly what students need to succeed.",
+  },
+  {
+    question: "Why does MI Tuition focus on commerce stream subjects?",
+    answer:
+      "We specialize in commerce stream subjects (POA, MOB, Mathematics, Economics) because this is our niche expertise. By focusing on what we know best, we can provide excellent, targeted tuition services that truly meet the needs of JC students in these subjects.",
+  },
+  {
+    question: "Do you offer both online and offline tuition?",
+    answer:
+      "Yes! We offer both online and offline tuition options to suit your preferences and schedule. Whether you prefer face-to-face learning or the convenience of online sessions, we have you covered.",
+  },
+  {
     question: "What subjects does MI Tuition offer?",
     answer:
       "We offer expert tuition for Principles of Accounting (POA), Management of Business (MOB), Mathematics, and Economics for JC students in Singapore.",
@@ -27,7 +42,7 @@ const faqs = [
   {
     question: "What makes MI Tuition different?",
     answer:
-      "We offer small class sizes for personalized attention, experienced tutors specialized in JC subjects, and an online Q&A platform for continuous learning support.",
+      "We offer small class sizes for personalized attention, experienced tutors who are ex-MI students and ex-MOE teachers specialized in JC commerce subjects, and an online Q&A platform for continuous learning support.",
   },
   {
     question: "How do I sign up as a student?",
