@@ -16,7 +16,7 @@ const SEO = ({
   description = "Premier Singapore tuition for JC students. Expert tutors for Principles of Accounting (POA), Management of Business (MOB), Mathematics, and Economics. Ask questions online, track progress, and excel in your studies.",
   keywords = "Singapore tuition, POA tuition, MOB tuition, JC math tutor, economics tutor, ask questions online, JC tuition Singapore, accounting tutor, mathematics tuition",
   canonicalUrl,
-  ogImage = "https://lovable.dev/opengraph-image-p98pqg.png",
+  ogImage = "https://micommercestreamtuition.com/og-image.png",
   noIndex = false,
 }: SEOProps) => {
   const fullCanonicalUrl = canonicalUrl ? `${PRODUCTION_URL}${canonicalUrl}` : PRODUCTION_URL;
