@@ -91,7 +91,7 @@ const Index = () => {
     },
     {
       icon: Library,
-      title: "complete commerce stream subjects",
+      title: "Complete Commerce Stream Subjects",
       description: "We are familiar with syllabus in commerce stream across POA, MOB and Econs",
     },
     {
