@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { BookOpen, Users, MessageSquare, TrendingUp, Phone } from "lucide-react";
+import { BookOpen, Users, MessageSquare, TrendingUp, Phone, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -84,16 +84,23 @@ const Index = () => {
             team of tutors!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary">
-              Book Trial Lesson
-            </Button>
-            <Button size="lg" variant="hero">
-              Student Login
-            </Button>
-            <Button size="lg" variant="hero">
-              <Phone className="mr-2 h-4 w-4" />
-              WhatsApp Us
-            </Button>
+            <Link to="/auth">
+              <Button size="lg" variant="secondary">
+                Student Login
+              </Button>
+            </Link>
+            <a href="https://wa.me/6585116415" target="_blank" rel="noopener noreferrer">
+              <Button size="lg" variant="hero">
+                <Phone className="mr-2 h-4 w-4" />
+                WhatsApp Us
+              </Button>
+            </a>
+            <a href="mailto:yichenue@gmail.com">
+              <Button size="lg" variant="hero">
+                <Mail className="mr-2 h-4 w-4" />
+                Email Us
+              </Button>
+            </a>
           </div>
         </div>
       </section>
@@ -184,12 +191,18 @@ const Index = () => {
             Join hundreds of students who have improved their grades with our expert tuition
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="default">
-              Book Your Free Trial
-            </Button>
-            <Button size="lg" variant="hero">
-              Contact Us
-            </Button>
+            <a href="https://wa.me/6585116415" target="_blank" rel="noopener noreferrer">
+              <Button size="lg" variant="default">
+                <Phone className="mr-2 h-4 w-4" />
+                WhatsApp Us
+              </Button>
+            </a>
+            <a href="mailto:yichenue@gmail.com">
+              <Button size="lg" variant="hero">
+                <Mail className="mr-2 h-4 w-4" />
+                Email Us
+              </Button>
+            </a>
           </div>
         </div>
       </section>
