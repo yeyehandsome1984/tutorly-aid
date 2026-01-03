@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { BookOpen, Users, MessageSquare, TrendingUp, Phone, Mail } from "lucide-react";
+import { GraduationCap, Headphones, Library, NotebookPen, Phone, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import SEO from "@/components/SEO";
@@ -80,22 +80,22 @@ const Index = () => {
 
   const features = [
     {
-      icon: BookOpen,
+      icon: GraduationCap,
       title: "Quality and patient Tutors",
       description: "Learn from experienced tutor or top students from respective subjects",
     },
     {
-      icon: MessageSquare,
+      icon: Headphones,
       title: "Responsive to questions",
       description: "Tutors are responsive to students question through whatapps, calls or other channels",
     },
     {
-      icon: TrendingUp,
+      icon: Library,
       title: "complete commerce stream subjects",
       description: "We are familiar with syllabus in commerce stream across POA, MOB and Econs",
     },
     {
-      icon: Users,
+      icon: NotebookPen,
       title: "Customized and quality Note",
       description: "We made our own note to tackle students pain points. We also have complete material from MI",
     },
