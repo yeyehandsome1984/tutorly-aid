@@ -11,23 +11,28 @@ import FAQSchema from "@/components/FAQSchema";
 const faqs = [
   {
     question: "What subjects does MI Tuition offer?",
-    answer: "We offer expert tuition for Principles of Accounting (POA), Management of Business (MOB), Mathematics, and Economics for JC students in Singapore.",
+    answer:
+      "We offer expert tuition for Principles of Accounting (POA), Management of Business (MOB), Mathematics, and Economics for JC students in Singapore.",
   },
   {
     question: "How can I contact MI Tuition?",
-    answer: "You can reach us via WhatsApp at +65 8511 6415 or email us at yichenue@gmail.com. We respond to enquiries promptly.",
+    answer:
+      "You can reach us via WhatsApp at +65 8511 6415 or email us at yichenue@gmail.com. We respond to enquiries promptly.",
   },
   {
     question: "Can I ask questions online?",
-    answer: "Yes! Our platform allows students to ask questions online and receive answers from our expert tutors. Simply log in to your account and post your question.",
+    answer:
+      "Yes! Our platform allows students to ask questions online and receive answers from our expert tutors. Simply log in to your account and post your question.",
   },
   {
     question: "What makes MI Tuition different?",
-    answer: "We offer small class sizes for personalized attention, experienced tutors specialized in JC subjects, and an online Q&A platform for continuous learning support.",
+    answer:
+      "We offer small class sizes for personalized attention, experienced tutors specialized in JC subjects, and an online Q&A platform for continuous learning support.",
   },
   {
     question: "How do I sign up as a student?",
-    answer: "Click the Student Login button on our website and create an account. Once registered, you can ask questions and access our learning resources.",
+    answer:
+      "Click the Student Login button on our website and create an account. Once registered, you can ask questions and access our learning resources.",
   },
 ];
 
@@ -107,8 +112,8 @@ const Index = () => {
             Excel in Your JC Studies with Excellent Tuition Team
           </h1>
           <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto text-white/95 drop-shadow-md">
-            Effective Tuition for POA, MOB, Mathematics, and Economics. Let's achieve academic excellence with dedicated
-            team of tutors!
+            Effective Tuition for A-Level commerce stream subjects, including POA, MOB, Mathematics, and Economics.
+            Let's achieve academic excellence with dedicated team of tutors!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/auth">
