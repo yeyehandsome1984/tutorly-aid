@@ -80,8 +80,8 @@ const Index = () => {
             Excel in Your JC Studies with Excellent Tuition Team
           </h1>
           <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto text-white/95 drop-shadow-md">
-            Premium tuition for POA, MOB, Mathematics, and Economics. Ask questions online, track your progress, and
-            achieve academic excellence with dedicated team of tutors.
+            Effective Tuition for POA, MOB, Mathematics, and Economics. Let's achieve academic excellence with dedicated
+            team of tutors!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" variant="secondary">
