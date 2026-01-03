@@ -9,7 +9,7 @@ interface SEOProps {
   noIndex?: boolean;
 }
 
-const PRODUCTION_URL = "https://mitutors.sg";
+const PRODUCTION_URL = "https://micommercestreamtuition.com";
 
 const SEO = ({
   title = "MI Tuition - Expert JC Tuition for POA, MOB, Mathematics & Economics | Singapore",
