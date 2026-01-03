@@ -109,7 +109,7 @@ const Index = () => {
       <section className="gradient-hero py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg">
-            Excel in Your JC Studies with Excellent Tuition Team
+            Excel in Your JC Commerce Stream with Excellent Tuition Team
           </h1>
           <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto text-white/95 drop-shadow-md">
             Effective Tuition for A-Level commerce stream subjects, including POA, MOB, Mathematics, and Economics.
