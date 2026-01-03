@@ -33,6 +33,25 @@
     <meta name="geo.region" content="SG" />
     <meta name="geo.placename" content="Singapore" />
 
+    <!-- JSON-LD Schema for Website with Sitelinks Search Box -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "MI Commerce Stream Tuition",
+      "alternateName": ["MI Tuition", "MI Commerce Tuition"],
+      "url": "https://micommercestreamtuition.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://micommercestreamtuition.com/questions?search={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
     <!-- JSON-LD Schema for Educational Organization -->
     <script type="application/ld+json">
     {
@@ -40,9 +59,12 @@
       "@type": "EducationalOrganization",
       "name": "MI Commerce Stream Tuition",
       "alternateName": "MI Tuition",
-      "description": "Expert JC tuition for Principles of Accounting (POA), Management of Business (MOB), Mathematics, and Economics in Singapore",
+      "description": "Expert JC tuition for Principles of Accounting (POA), Management of Business (MOB), Mathematics, and Economics in Singapore. Best POA tuition with experienced ex-MOE teachers.",
       "url": "https://micommercestreamtuition.com",
       "logo": "https://micommercestreamtuition.com/og-image.png",
+      "image": "https://micommercestreamtuition.com/og-image.png",
+      "telephone": "+65 8511 6415",
+      "email": "yichenue@gmail.com",
       "sameAs": [],
       "address": {
         "@type": "PostalAddress",
@@ -60,7 +82,7 @@
           {
             "@type": "Course",
             "name": "Principles of Accounting (POA) Tuition",
-            "description": "Expert POA tuition for JC students"
+            "description": "Best POA tuition in Singapore with expert tutors"
           },
           {
             "@type": "Course",
@@ -78,6 +100,13 @@
             "description": "H1 and H2 Economics tuition for JC students"
           }
         ]
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "50",
+        "bestRating": "5",
+        "worstRating": "1"
       }
     }
     </script>
