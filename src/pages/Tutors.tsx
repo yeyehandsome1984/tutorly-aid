@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { supabase } from "@/integrations/supabase/client";
+import SEO from "@/components/SEO";
 
 interface Tutor {
   id: string;
@@ -72,6 +73,12 @@ const Tutors = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Expert JC Tutors | POA, MOB, Math & Economics | MI Tuition Singapore"
+        description="Meet our experienced JC tutors specializing in Principles of Accounting, Management of Business, Mathematics, and Economics. Dedicated educators committed to your academic success."
+        keywords="JC tutors Singapore, POA tutor, MOB tutor, math tutor, economics tutor, experienced educators"
+        canonicalUrl="/tutors"
+      />
       <main className="container mx-auto px-4 py-12">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Expert Tutors</h1>

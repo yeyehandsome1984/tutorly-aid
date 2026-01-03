@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { supabase } from "@/integrations/supabase/client";
+import SEO from "@/components/SEO";
 
 interface Subject {
   id: string;
@@ -45,6 +46,12 @@ const Subjects = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="JC Subjects - POA, MOB, Mathematics & Economics | MI Tuition Singapore"
+        description="Comprehensive JC tuition for Principles of Accounting (POA), Management of Business (MOB), Mathematics, and Economics. Proven teaching methodologies for academic excellence."
+        keywords="JC subjects, POA tuition, MOB tuition, mathematics tuition, economics tuition, Singapore JC"
+        canonicalUrl="/subjects"
+      />
       <main className="container mx-auto px-4 py-12">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Subjects We Teach</h1>

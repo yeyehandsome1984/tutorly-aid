@@ -5,6 +5,31 @@ import { Badge } from "@/components/ui/badge";
 import { BookOpen, Users, MessageSquare, TrendingUp, Phone, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
+import SEO from "@/components/SEO";
+import FAQSchema from "@/components/FAQSchema";
+
+const faqs = [
+  {
+    question: "What subjects does MI Tuition offer?",
+    answer: "We offer expert tuition for Principles of Accounting (POA), Management of Business (MOB), Mathematics, and Economics for JC students in Singapore.",
+  },
+  {
+    question: "How can I contact MI Tuition?",
+    answer: "You can reach us via WhatsApp at +65 8511 6415 or email us at yichenue@gmail.com. We respond to enquiries promptly.",
+  },
+  {
+    question: "Can I ask questions online?",
+    answer: "Yes! Our platform allows students to ask questions online and receive answers from our expert tutors. Simply log in to your account and post your question.",
+  },
+  {
+    question: "What makes MI Tuition different?",
+    answer: "We offer small class sizes for personalized attention, experienced tutors specialized in JC subjects, and an online Q&A platform for continuous learning support.",
+  },
+  {
+    question: "How do I sign up as a student?",
+    answer: "Click the Student Login button on our website and create an account. Once registered, you can ask questions and access our learning resources.",
+  },
+];
 
 interface TutorPreview {
   id: string;
@@ -73,6 +98,8 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO canonicalUrl="/" />
+      <FAQSchema faqs={faqs} />
       {/* Hero Section */}
       <section className="gradient-hero py-20">
         <div className="container mx-auto px-4 text-center">

@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import Index from "./pages/Index";
 import Tutors from "./pages/Tutors";
 import Subjects from "./pages/Subjects";
@@ -25,37 +26,39 @@ import Navigation from "./components/Navigation";
 const queryClient = new QueryClient();
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Navigation />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/tutors" element={<Tutors />} />
-          <Route path="/subjects" element={<Subjects />} />
-          <Route path="/auth" element={<Auth />} />
-          <Route path="/questions" element={<Questions />} />
-          <Route path="/questions/:id" element={<QuestionDetail />} />
-          <Route path="/admin" element={<AdminLayout />}>
-            <Route index element={<AdminDashboard />} />
-            <Route path="tutors" element={<TutorsManagement />} />
-            <Route path="subjects" element={<SubjectsManagement />} />
-            <Route path="topics" element={<TopicsManagement />} />
-            <Route path="content" element={<ContentManagement />} />
-            <Route path="tutor-subjects" element={<TutorSubjectsManagement />} />
-          </Route>
-          <Route path="/tutor" element={<TutorLayout />}>
-            <Route index element={<TutorDashboard />} />
-            <Route path="questions" element={<TutorQuestionsManagement />} />
-          </Route>
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+  <HelmetProvider>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Navigation />
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/tutors" element={<Tutors />} />
+            <Route path="/subjects" element={<Subjects />} />
+            <Route path="/auth" element={<Auth />} />
+            <Route path="/questions" element={<Questions />} />
+            <Route path="/questions/:id" element={<QuestionDetail />} />
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route index element={<AdminDashboard />} />
+              <Route path="tutors" element={<TutorsManagement />} />
+              <Route path="subjects" element={<SubjectsManagement />} />
+              <Route path="topics" element={<TopicsManagement />} />
+              <Route path="content" element={<ContentManagement />} />
+              <Route path="tutor-subjects" element={<TutorSubjectsManagement />} />
+            </Route>
+            <Route path="/tutor" element={<TutorLayout />}>
+              <Route index element={<TutorDashboard />} />
+              <Route path="questions" element={<TutorQuestionsManagement />} />
+            </Route>
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  </HelmetProvider>
 );
 
 export default App;
