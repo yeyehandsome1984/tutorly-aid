@@ -81,8 +81,8 @@ const Index = () => {
   const features = [
     {
       icon: BookOpen,
-      title: "Expert Tutors",
-      description: "Learn from experienced educators or top students from respective subjects",
+      title: "Quality and patient Tutors",
+      description: "Learn from experienced tutor or top students from respective subjects",
     },
     {
       icon: MessageSquare,
@@ -91,7 +91,7 @@ const Index = () => {
     },
     {
       icon: TrendingUp,
-      title: "complete commerce stream",
+      title: "complete commerce stream subjects",
       description: "We are familiar with syllabus in commerce stream across POA, MOB and Econs",
     },
     {
