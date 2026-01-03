@@ -6,6 +6,7 @@ import { Plus, MessageSquare } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import SEO from "@/components/SEO";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -140,6 +141,12 @@ const Questions = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <SEO
+        title="Ask Questions Online | Get Expert Tutor Help | MI Tuition"
+        description="Post your academic questions and get answers from experienced tutors. Get help with POA, MOB, Mathematics, and Economics questions from MI Tuition experts."
+        keywords="ask questions online, tutor help, academic questions, POA questions, MOB questions, JC help"
+        canonicalUrl="/questions"
+      />
       <div className="flex justify-between items-center mb-8">
         <div>
           <h1 className="text-3xl font-bold mb-2">Questions & Answers</h1>

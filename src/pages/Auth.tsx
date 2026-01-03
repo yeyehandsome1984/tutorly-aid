@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
+import SEO from "@/components/SEO";
 
 const Auth = () => {
   const navigate = useNavigate();
@@ -66,6 +67,13 @@ const Auth = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-hero p-4">
+      <SEO
+        title="Student Login | MI Tuition Singapore"
+        description="Log in or sign up to access MI Tuition's online learning platform. Ask questions, track your progress, and connect with expert tutors."
+        keywords="student login, MI Tuition login, sign up, student portal"
+        canonicalUrl="/auth"
+        noIndex={true}
+      />
       <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle className="text-2xl text-center">
