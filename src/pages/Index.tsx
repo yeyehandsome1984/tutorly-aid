@@ -96,8 +96,8 @@ const Index = () => {
     },
     {
       icon: Users,
-      title: "Customised Note",
-      description: "We made our own note to tackle students pain points, we also have complete material from MI",
+      title: "Customized and quality Note",
+      description: "We made our own note to tackle students pain points. We also have complete material from MI",
     },
   ];
 
