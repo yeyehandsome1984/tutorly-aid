@@ -9,6 +9,8 @@ interface SEOProps {
   noIndex?: boolean;
 }
 
+const PRODUCTION_URL = "https://mitutors.sg";
+
 const SEO = ({
   title = "MI Tuition - Expert JC Tuition for POA, MOB, Mathematics & Economics | Singapore",
   description = "Premier Singapore tuition for JC students. Expert tutors for Principles of Accounting (POA), Management of Business (MOB), Mathematics, and Economics. Ask questions online, track progress, and excel in your studies.",
@@ -17,8 +19,7 @@ const SEO = ({
   ogImage = "https://lovable.dev/opengraph-image-p98pqg.png",
   noIndex = false,
 }: SEOProps) => {
-  const siteUrl = window.location.origin;
-  const fullCanonicalUrl = canonicalUrl ? `${siteUrl}${canonicalUrl}` : siteUrl;
+  const fullCanonicalUrl = canonicalUrl ? `${PRODUCTION_URL}${canonicalUrl}` : PRODUCTION_URL;
 
   return (
     <Helmet>
