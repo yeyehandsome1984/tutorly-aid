@@ -48,8 +48,8 @@ const Subjects = () => {
     <div className="min-h-screen bg-background">
       <SEO
         title="JC Subjects - POA, MOB, Mathematics & Economics | MI Tuition Singapore"
-        description="Comprehensive JC tuition for Principles of Accounting (POA), Management of Business (MOB), Mathematics, and Economics. Proven teaching methodologies for academic excellence."
-        keywords="JC subjects, POA tuition, MOB tuition, mathematics tuition, economics tuition, Singapore JC"
+        description="Expert A-level tuition for POA (9593), MOB (9587), H1/H2 Math (8843/9758), Economics (9570) at Millennia Institute (MI). 专业A水准补习 - 会计、商业、数学、经济。Proven teaching methodologies for academic excellence."
+        keywords="A-level tuition, POA tuition, Commerce Stream, MOB tuition, JC math tutor, economics tutor, ask questions online, JC tuition Singapore, accounting tutor, mathematics tuition, Management of Business Tuition, Principle of accounting tuition, Syllabus 9593, syllabus 9570, syllabus 9587, syllabus 8843, H2 Math, H1 Math, H2 POA, H2 MOB, syllabus 7087, MI, Millennia Institute (MI), 补习, 会计, 商业, 数学, 经济, A水准"
         canonicalUrl="/subjects"
       />
       <main className="container mx-auto px-4 py-12">
