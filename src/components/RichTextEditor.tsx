@@ -2,6 +2,7 @@ import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Image from '@tiptap/extension-image';
 import Link from '@tiptap/extension-link';
+import Underline from '@tiptap/extension-underline';
 import { TextStyle } from '@tiptap/extension-text-style';
 import Color from '@tiptap/extension-color';
 import { Extension } from '@tiptap/core';
@@ -14,6 +15,7 @@ import { useState, useCallback, useEffect } from 'react';
 import {
   Bold,
   Italic,
+  Underline as UnderlineIcon,
   Strikethrough,
   List,
   ListOrdered,
@@ -91,12 +93,18 @@ interface RichTextEditorProps {
 }
 
 const fontSizes = [
-  { label: 'Small', value: '12px' },
-  { label: 'Normal', value: '16px' },
-  { label: 'Large', value: '20px' },
-  { label: 'X-Large', value: '24px' },
-  { label: 'XX-Large', value: '32px' },
-  { label: 'Huge', value: '48px' },
+  { label: '10', value: '10px' },
+  { label: '11', value: '11px' },
+  { label: '12', value: '12px' },
+  { label: '14', value: '14px' },
+  { label: '16', value: '16px' },
+  { label: '18', value: '18px' },
+  { label: '20', value: '20px' },
+  { label: '24', value: '24px' },
+  { label: '28', value: '28px' },
+  { label: '32', value: '32px' },
+  { label: '36', value: '36px' },
+  { label: '48', value: '48px' },
 ];
 
 const colors = [
@@ -123,6 +131,7 @@ const RichTextEditor = ({ content, onChange }: RichTextEditorProps) => {
       TextStyle,
       Color,
       FontSize,
+      Underline,
       Image.configure({
         HTMLAttributes: {
           class: 'rounded-lg max-w-full',
@@ -226,6 +235,14 @@ const RichTextEditor = ({ content, onChange }: RichTextEditorProps) => {
           onClick={() => editor.chain().focus().toggleItalic().run()}
         >
           <Italic className="h-4 w-4" />
+        </Button>
+        <Button
+          type="button"
+          variant={editor.isActive('underline') ? 'secondary' : 'ghost'}
+          size="sm"
+          onClick={() => editor.chain().focus().toggleUnderline().run()}
+        >
+          <UnderlineIcon className="h-4 w-4" />
         </Button>
         <Button
           type="button"
