@@ -90,10 +90,19 @@ const Tutors = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          {tutors.map((tutor) => (
+          {tutors.map((tutor) => {
+            // Split name to style parenthetical text differently
+            const nameMatch = tutor.name.match(/^(.+?)(\s*\(.+\))$/);
+            const mainName = nameMatch ? nameMatch[1] : tutor.name;
+            const titlePart = nameMatch ? nameMatch[2] : '';
+            
+            return (
             <Card key={tutor.id} className="shadow-card hover:shadow-elevated transition-shadow">
               <CardHeader>
-                <CardTitle className="text-2xl">{tutor.name}</CardTitle>
+                <CardTitle className="text-2xl">
+                  {mainName}
+                  {titlePart && <span className="text-base font-normal text-muted-foreground">{titlePart}</span>}
+                </CardTitle>
                 <CardDescription className="text-base mt-2 leading-relaxed">{tutor.introduction}</CardDescription>
               </CardHeader>
               <CardContent>
@@ -106,7 +115,8 @@ const Tutors = () => {
                 </div>
               </CardContent>
             </Card>
-          ))}
+            );
+          })}
         </div>
 
         {/* Cross-linking section */}
