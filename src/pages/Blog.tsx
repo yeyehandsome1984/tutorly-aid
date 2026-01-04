@@ -6,6 +6,7 @@ import SEO from "@/components/SEO";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import BlogCardSkeleton from "@/components/BlogCardSkeleton";
 
 export interface BlogPost {
   id: string;
@@ -126,8 +127,10 @@ const Blog = () => {
       <section className="py-12">
         <div className="container mx-auto px-4">
           {isLoading ? (
-            <div className="text-center py-8">
-              <p className="text-muted-foreground">Loading articles...</p>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <BlogCardSkeleton key={i} />
+              ))}
             </div>
           ) : blogPosts.length === 0 ? (
             <div className="text-center py-8">

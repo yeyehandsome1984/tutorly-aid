@@ -24,6 +24,7 @@ import SitemapManagement from "./pages/admin/SitemapManagement";
 import NotFound from "./pages/NotFound";
 import Navigation from "./components/Navigation";
 import AuthRecoveryRedirect from "./components/AuthRecoveryRedirect";
+import StickyWhatsApp from "./components/StickyWhatsApp";
 
 const queryClient = new QueryClient();
 
@@ -36,6 +37,7 @@ const App = () => (
         <BrowserRouter>
           <AuthRecoveryRedirect />
           <Navigation />
+          <StickyWhatsApp />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/tutors" element={<Tutors />} />

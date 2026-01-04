@@ -8,6 +8,8 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { optimizeBlogContent } from "@/lib/image-optimizer";
+import ShareButtons from "@/components/ShareButtons";
+import BlogPostSkeleton from "@/components/BlogPostSkeleton";
 
 interface BlogPostData {
   id: string;
@@ -91,11 +93,7 @@ const BlogPost = () => {
   });
 
   if (isLoading) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <p className="text-muted-foreground">Loading article...</p>
-      </div>
-    );
+    return <BlogPostSkeleton />;
   }
 
   if (error || !post) {
@@ -159,6 +157,12 @@ const BlogPost = () => {
             {post.title_chinese && (
               <p className="text-lg text-white/90">{post.title_chinese}</p>
             )}
+            <div className="mt-4">
+              <ShareButtons 
+                url={`https://micommercestreamtuition.com/blog/${post.slug}`} 
+                title={post.title} 
+              />
+            </div>
           </div>
         </div>
       </section>
