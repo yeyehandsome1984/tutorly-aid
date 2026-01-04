@@ -152,8 +152,11 @@ const BlogManagement = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // Auto-generate slug from title if not provided
+    const finalSlug = formData.slug.trim() || generateSlug(formData.title);
+    
     const postData = {
-      slug: formData.slug,
+      slug: finalSlug,
       title: formData.title,
       title_chinese: formData.title_chinese || null,
       excerpt: formData.excerpt,
@@ -223,12 +226,12 @@ const BlogManagement = () => {
                   />
                 </div>
                 <div>
-                  <Label htmlFor="slug">Slug (URL) *</Label>
+                  <Label htmlFor="slug">Slug (URL)</Label>
                   <Input
                     id="slug"
                     value={formData.slug}
                     onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
-                    required
+                    placeholder="Auto-generated from title if empty"
                   />
                 </div>
               </div>
