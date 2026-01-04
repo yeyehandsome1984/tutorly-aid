@@ -5,6 +5,7 @@ import { Calendar, Clock, ArrowRight } from "lucide-react";
 import SEO from "@/components/SEO";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export interface BlogPost {
   id: string;
@@ -47,6 +48,33 @@ const BlogSchema = ({ posts }: { posts: BlogPost[] }) => {
   );
 };
 
+// Get category-specific meta description
+const getCategoryMeta = (category: string | null) => {
+  const categoryMeta: Record<string, { title: string; description: string }> = {
+    "POA": {
+      title: "POA Study Tips & Guides - Principles of Accounting | MI Tuition Blog",
+      description: "Free POA study guides, accounting tips, and exam strategies for A-Level Principles of Accounting (Syllabus 9593). Master financial statements, ratio analysis & more."
+    },
+    "MOB": {
+      title: "MOB Study Tips & Guides - Management of Business | MI Tuition Blog",
+      description: "Free MOB study guides and exam tips for A-Level Management of Business (Syllabus 9587). Learn business strategy, marketing, operations & HR concepts."
+    },
+    "Mathematics": {
+      title: "Math Study Tips & Guides - H1/H2 Mathematics | MI Tuition Blog",
+      description: "Free mathematics study guides for A-Level H1/H2 Math. Master calculus, statistics, probability & problem-solving techniques."
+    },
+    "Economics": {
+      title: "Economics Study Tips & Guides - H1/H2 Econs | MI Tuition Blog",
+      description: "Free economics study guides for A-Level H1/H2 Economics (Syllabus 9570). Master micro/macroeconomics, market structures & policy analysis."
+    }
+  };
+  
+  return category && categoryMeta[category] ? categoryMeta[category] : {
+    title: "Blog - A-Level POA, MOB, Math & Economics Study Tips | MI Tuition",
+    description: "Free educational articles, study guides, and exam tips for A-Level commerce stream students in Singapore. POA, MOB, Mathematics & Economics resources."
+  };
+};
+
 const Blog = () => {
   const { data: blogPosts = [], isLoading } = useQuery({
     queryKey: ['blog-posts'],
@@ -62,15 +90,25 @@ const Blog = () => {
     },
   });
 
+  // Get unique categories from posts
+  const categories = [...new Set(blogPosts.map(post => post.category))];
+  const primaryCategory = categories.length === 1 ? categories[0] : null;
+  const { title: seoTitle, description: seoDescription } = getCategoryMeta(primaryCategory);
+
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Blog - A-Level POA & MOB Study Tips | MI Tuition"
-        description="Free educational articles, study guides, and exam tips for A-Level POA (Principles of Accounting) and MOB (Management of Business) students in Singapore."
-        keywords="A-Level blog, POA study guide, MOB tips, commerce stream articles, JC tuition blog, accounting tips, business studies"
+        title={seoTitle}
+        description={seoDescription}
+        keywords="A-Level blog, POA study guide, MOB tips, commerce stream articles, JC tuition blog, accounting tips, business studies, math study tips, economics guide"
         canonicalUrl="/blog"
       />
       <BlogSchema posts={blogPosts} />
+
+      {/* Breadcrumbs */}
+      <div className="container mx-auto px-4 pt-6">
+        <Breadcrumbs />
+      </div>
 
       {/* Hero Section */}
       <section className="gradient-hero py-12">

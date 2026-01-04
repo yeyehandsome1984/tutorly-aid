@@ -6,6 +6,7 @@ import { Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import SEO from "@/components/SEO";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 interface Tutor {
   id: string;
@@ -80,6 +81,7 @@ const Tutors = () => {
         canonicalUrl="/tutors"
       />
       <main className="container mx-auto px-4 py-12">
+        <Breadcrumbs className="mb-6" />
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Tutors</h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">

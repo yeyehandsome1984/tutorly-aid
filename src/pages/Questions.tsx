@@ -4,6 +4,7 @@ import { Phone, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
 import FAQSchema from "@/components/FAQSchema";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 const faqs = [
   {
@@ -47,14 +48,15 @@ const Questions = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="FAQ | Frequently Asked Questions | MI Tuition"
-        description="Find answers about MI Tuition for POA (9593), MOB (9587), H1/H2 Math, Economics (9570). 常见问题解答 - 专业A水准补习服务。Learn about our tutors, subjects, online & offline options."
-        keywords="A-level tuition, POA tuition, Commerce Stream, MOB tuition, JC math tutor, economics tutor, ask questions online, JC tuition Singapore, accounting tutor, mathematics tuition, Management of Business Tuition, Principle of accounting tuition, Syllabus 9593, syllabus 9570, syllabus 9587, syllabus 8843, H2 Math, H1 Math, H2 POA, H2 MOB, syllabus 7087, MI, Millennia Institute (MI), 补习, 会计, 商业, 数学, 经济, A水准, FAQ, 常见问题"
-        canonicalUrl="/questions"
+        title="FAQ - Frequently Asked Questions About JC Tuition | MI Tuition Singapore"
+        description="Get answers about MI Tuition services: POA (会计), MOB (商业), Math (数学), Economics (经济). Learn about our ex-MOE tutors, online/offline options, trial lessons & pricing. 常见问题解答。"
+        keywords="A-level tuition FAQ, POA tuition questions, MOB tuition help, JC tuition Singapore FAQ, accounting tutor questions, trial lesson, tuition pricing, online tuition, offline tuition, Millennia Institute, 补习常见问题, 试课"
+        canonicalUrl="/faq"
       />
       <FAQSchema faqs={faqs} />
       
       <div className="container mx-auto px-4 py-8">
+        <Breadcrumbs className="mb-6" />
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-2">Frequently Asked Questions</h1>
           <p className="text-muted-foreground">Find answers to common questions about our tuition services</p>

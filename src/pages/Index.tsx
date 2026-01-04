@@ -9,6 +9,7 @@ import { supabase } from "@/integrations/supabase/client";
 import SEO from "@/components/SEO";
 import FAQSchema from "@/components/FAQSchema";
 import Testimonials from "@/components/Testimonials";
+import EducationalOrganizationSchema from "@/components/EducationalOrganizationSchema";
 
 const faqs = [
   {
@@ -117,6 +118,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <SEO canonicalUrl="/" />
       <FAQSchema faqs={faqs} />
+      <EducationalOrganizationSchema />
       {/* Hero Section */}
       <section className="gradient-hero py-20">
         <div className="container mx-auto px-4 text-center">
