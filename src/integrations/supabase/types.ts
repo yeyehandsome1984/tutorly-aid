@@ -14,6 +14,54 @@ export type Database = {
   }
   public: {
     Tables: {
+      blog_posts: {
+        Row: {
+          category: string
+          content: string
+          created_at: string
+          excerpt: string
+          id: string
+          keywords: string[] | null
+          published: boolean
+          published_at: string | null
+          read_time: string
+          slug: string
+          title: string
+          title_chinese: string | null
+          updated_at: string
+        }
+        Insert: {
+          category: string
+          content: string
+          created_at?: string
+          excerpt: string
+          id?: string
+          keywords?: string[] | null
+          published?: boolean
+          published_at?: string | null
+          read_time?: string
+          slug: string
+          title: string
+          title_chinese?: string | null
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          content?: string
+          created_at?: string
+          excerpt?: string
+          id?: string
+          keywords?: string[] | null
+          published?: boolean
+          published_at?: string | null
+          read_time?: string
+          slug?: string
+          title?: string
+          title_chinese?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       content: {
         Row: {
           body: string | null
@@ -79,6 +127,45 @@ export type Database = {
           keywords?: string[] | null
           name?: string
           updated_at?: string | null
+        }
+        Relationships: []
+      }
+      testimonials: {
+        Row: {
+          comment: string
+          created_at: string
+          grade: string
+          id: string
+          is_active: boolean
+          name: string
+          order_index: number | null
+          rating: number
+          subject: string
+          updated_at: string
+        }
+        Insert: {
+          comment: string
+          created_at?: string
+          grade: string
+          id?: string
+          is_active?: boolean
+          name: string
+          order_index?: number | null
+          rating?: number
+          subject: string
+          updated_at?: string
+        }
+        Update: {
+          comment?: string
+          created_at?: string
+          grade?: string
+          id?: string
+          is_active?: boolean
+          name?: string
+          order_index?: number | null
+          rating?: number
+          subject?: string
+          updated_at?: string
         }
         Relationships: []
       }

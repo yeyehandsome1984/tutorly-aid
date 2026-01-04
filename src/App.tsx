@@ -18,6 +18,8 @@ import SubjectsManagement from "./pages/admin/SubjectsManagement";
 import TopicsManagement from "./pages/admin/TopicsManagement";
 import ContentManagement from "./pages/admin/ContentManagement";
 import TutorSubjectsManagement from "./pages/admin/TutorSubjectsManagement";
+import BlogManagement from "./pages/admin/BlogManagement";
+import TestimonialsManagement from "./pages/admin/TestimonialsManagement";
 import NotFound from "./pages/NotFound";
 import Navigation from "./components/Navigation";
 import AuthRecoveryRedirect from "./components/AuthRecoveryRedirect";
@@ -48,6 +50,8 @@ const App = () => (
               <Route path="topics" element={<TopicsManagement />} />
               <Route path="content" element={<ContentManagement />} />
               <Route path="tutor-subjects" element={<TutorSubjectsManagement />} />
+              <Route path="blog" element={<BlogManagement />} />
+              <Route path="testimonials" element={<TestimonialsManagement />} />
             </Route>
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
