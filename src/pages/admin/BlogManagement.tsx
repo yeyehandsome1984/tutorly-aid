@@ -6,14 +6,16 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  DialogFooter,
 } from "@/components/ui/dialog";
 import {
   Table,
@@ -24,8 +26,9 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { toast } from "sonner";
-import { Plus, Pencil, Trash2, Eye, EyeOff } from "lucide-react";
+import { Plus, Pencil, Trash2, Eye, EyeOff, MapPin, Download, Copy, CheckCircle } from "lucide-react";
 import RichTextEditor from "@/components/RichTextEditor";
+import { generateSitemapXml, downloadSitemapXml, copySitemapToClipboard } from "@/lib/sitemap-generator";
 
 interface BlogPost {
   id: string;
@@ -47,6 +50,9 @@ const BlogManagement = () => {
   const queryClient = useQueryClient();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [editingPost, setEditingPost] = useState<BlogPost | null>(null);
+  const [sitemapDialogOpen, setSitemapDialogOpen] = useState(false);
+  const [sitemapXml, setSitemapXml] = useState("");
+  const [sitemapCopied, setSitemapCopied] = useState(false);
   const [formData, setFormData] = useState({
     slug: "",
     title: "",
@@ -71,24 +77,39 @@ const BlogManagement = () => {
     },
   });
 
+  const triggerSitemapPrompt = async () => {
+    try {
+      const { xml } = await generateSitemapXml();
+      setSitemapXml(xml);
+      setSitemapDialogOpen(true);
+    } catch (error) {
+      console.error("Error generating sitemap:", error);
+    }
+  };
+
   const createMutation = useMutation({
-    mutationFn: async (data: Omit<BlogPost, "id" | "created_at" | "updated_at">) => {
+    mutationFn: async (data: Omit<BlogPost, "id" | "created_at" | "updated_at"> & { wasPublished?: boolean }) => {
+      const { wasPublished, ...postData } = data;
       const { error } = await supabase.from("blog_posts").insert({
-        ...data,
-        published_at: data.published ? new Date().toISOString() : null,
+        ...postData,
+        published_at: postData.published ? new Date().toISOString() : null,
       });
       if (error) throw error;
+      return { isPublished: postData.published };
     },
-    onSuccess: () => {
+    onSuccess: (result) => {
       queryClient.invalidateQueries({ queryKey: ["admin-blog-posts"] });
       toast.success("Blog post created successfully");
       resetForm();
+      if (result.isPublished) {
+        triggerSitemapPrompt();
+      }
     },
     onError: (error) => toast.error(`Error: ${error.message}`),
   });
 
   const updateMutation = useMutation({
-    mutationFn: async ({ id, data }: { id: string; data: Partial<BlogPost> }) => {
+    mutationFn: async ({ id, data, wasPublished }: { id: string; data: Partial<BlogPost>; wasPublished?: boolean }) => {
       const { error } = await supabase
         .from("blog_posts")
         .update({
@@ -97,11 +118,16 @@ const BlogManagement = () => {
         })
         .eq("id", id);
       if (error) throw error;
+      return { isPublished: data.published, wasPublished };
     },
-    onSuccess: () => {
+    onSuccess: (result) => {
       queryClient.invalidateQueries({ queryKey: ["admin-blog-posts"] });
       toast.success("Blog post updated successfully");
       resetForm();
+      // Trigger sitemap prompt if post is published (newly or updated while published)
+      if (result.isPublished) {
+        triggerSitemapPrompt();
+      }
     },
     onError: (error) => toast.error(`Error: ${error.message}`),
   });
@@ -169,12 +195,27 @@ const BlogManagement = () => {
     };
 
     if (editingPost) {
-      updateMutation.mutate({ id: editingPost.id, data: postData });
+      updateMutation.mutate({ id: editingPost.id, data: postData, wasPublished: editingPost.published });
     } else {
       createMutation.mutate(postData);
     }
   };
 
+  const handleCopySitemap = async () => {
+    try {
+      await copySitemapToClipboard(sitemapXml);
+      setSitemapCopied(true);
+      toast.success("Sitemap copied to clipboard");
+      setTimeout(() => setSitemapCopied(false), 2000);
+    } catch (error) {
+      toast.error("Failed to copy sitemap");
+    }
+  };
+
+  const handleDownloadSitemap = () => {
+    downloadSitemapXml(sitemapXml);
+    toast.success("Sitemap downloaded");
+  };
   const generateSlug = (title: string) => {
     return title
       .toLowerCase()
@@ -396,6 +437,43 @@ const BlogManagement = () => {
           </Table>
         </CardContent>
       </Card>
+
+      {/* Sitemap Update Dialog */}
+      <Dialog open={sitemapDialogOpen} onOpenChange={setSitemapDialogOpen}>
+        <DialogContent className="max-w-lg">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2">
+              <MapPin className="h-5 w-5" />
+              Update Sitemap
+            </DialogTitle>
+            <DialogDescription>
+              Your blog post has been saved. Update your sitemap to reflect the changes for SEO.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4">
+            <p className="text-sm text-muted-foreground">
+              Copy or download the updated sitemap and replace <code className="bg-muted px-1 py-0.5 rounded text-xs">public/sitemap.xml</code> in your project.
+            </p>
+          </div>
+          <DialogFooter className="flex gap-2 sm:gap-0">
+            <Button variant="outline" onClick={() => setSitemapDialogOpen(false)}>
+              Skip
+            </Button>
+            <Button variant="outline" onClick={handleCopySitemap}>
+              {sitemapCopied ? (
+                <CheckCircle className="mr-2 h-4 w-4 text-green-500" />
+              ) : (
+                <Copy className="mr-2 h-4 w-4" />
+              )}
+              {sitemapCopied ? "Copied!" : "Copy XML"}
+            </Button>
+            <Button onClick={handleDownloadSitemap}>
+              <Download className="mr-2 h-4 w-4" />
+              Download
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
