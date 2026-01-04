@@ -98,7 +98,7 @@ const Tutors = () => {
             const titlePart = nameMatch ? nameMatch[2] : '';
             
             return (
-            <Card key={tutor.id} className="shadow-card hover:shadow-elevated transition-shadow">
+            <Card key={tutor.id} className="shadow-card hover:shadow-elevated hover:scale-[1.02] transition-all duration-300 cursor-pointer">
               <CardHeader className="flex flex-row items-start gap-4">
                 <Avatar className="h-16 w-16 shrink-0">
                   <AvatarImage src="" alt={tutor.name} />
