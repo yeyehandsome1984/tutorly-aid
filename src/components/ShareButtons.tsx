@@ -15,7 +15,7 @@ const ShareButtons = ({ url, title }: ShareButtonsProps) => {
       name: "WhatsApp",
       icon: MessageCircle,
       href: `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`,
-      className: "bg-secondary hover:bg-secondary/90 text-secondary-foreground",
+      className: "bg-primary hover:bg-primary/90 text-primary-foreground",
     },
     {
       name: "Telegram",

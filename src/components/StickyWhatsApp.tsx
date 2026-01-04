@@ -27,7 +27,7 @@ const StickyWhatsApp = () => {
             rel="noopener noreferrer"
             className="block"
           >
-            <Button size="sm" className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground">
+            <Button size="sm" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
               <MessageCircle className="h-4 w-4 mr-2" />
               Start Chat
             </Button>
@@ -38,7 +38,7 @@ const StickyWhatsApp = () => {
       {/* Main Button */}
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="h-14 w-14 rounded-full bg-secondary hover:bg-secondary/90 text-secondary-foreground shadow-elevated flex items-center justify-center transition-all hover:scale-105"
+        className="h-14 w-14 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-elevated flex items-center justify-center transition-all hover:scale-105"
         aria-label="Contact us on WhatsApp"
       >
         <MessageCircle className="h-7 w-7" />

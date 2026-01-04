@@ -11,7 +11,6 @@ import FAQSchema from "@/components/FAQSchema";
 import Testimonials from "@/components/Testimonials";
 import EducationalOrganizationSchema from "@/components/EducationalOrganizationSchema";
 import LazySection from "@/components/LazySection";
-import TrialBookingForm from "@/components/TrialBookingForm";
 
 const faqs = [
   {
@@ -139,7 +138,7 @@ const Index = () => {
             <a href="https://wa.me/6585116415" target="_blank" rel="noopener noreferrer">
               <Button
                 size="lg"
-                variant="secondary"
+                variant="hero"
                 className="text-lg"
               >
                 <Phone className="mr-2 h-5 w-5" />
@@ -234,23 +233,6 @@ const Index = () => {
                 <Button variant="default">Explore Subjects</Button>
               </Link>
             </div>
-          </div>
-        </section>
-      </LazySection>
-
-      {/* Trial Booking Section - Lazy Loaded */}
-      <LazySection>
-        <section className="py-16 bg-muted" id="book-trial">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Book a Trial Class</h2>
-            <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Experience our teaching style with a trial lesson. Fill in the form below and we'll get back to you within 24 hours.
-            </p>
-            <Card className="max-w-2xl mx-auto shadow-elevated">
-              <CardContent className="pt-6">
-                <TrialBookingForm />
-              </CardContent>
-            </Card>
           </div>
         </section>
       </LazySection>
