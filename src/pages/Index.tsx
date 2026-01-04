@@ -40,6 +40,11 @@ const faqs = [
     answer:
       "Yes, we can arrange a trial lesson for you. Pricing will be discussed through WhatsApp or call separately.",
   },
+  {
+    question: "What languages can lessons be conducted in?",
+    answer:
+      "Lessons can be conducted in English or Mandarin, depending on your preference and comfort level.",
+  },
 ];
 
 interface TutorPreview {
