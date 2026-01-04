@@ -148,7 +148,7 @@ const BlogPost = () => {
       <section className="py-12">
         <div className="container mx-auto px-4">
           <div 
-            className="max-w-3xl mx-auto prose prose-lg"
+            className="max-w-3xl mx-auto prose prose-lg prose-p:mb-4 prose-p:leading-relaxed prose-headings:mt-8 prose-headings:mb-4 prose-ul:my-4 prose-ol:my-4 prose-li:my-1 [&>p]:mb-4 [&>*]:mb-4"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
         </div>
