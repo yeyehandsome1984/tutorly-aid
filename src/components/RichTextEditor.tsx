@@ -4,6 +4,10 @@ import Image from '@tiptap/extension-image';
 import Link from '@tiptap/extension-link';
 import Underline from '@tiptap/extension-underline';
 import TextAlign from '@tiptap/extension-text-align';
+import { Table } from '@tiptap/extension-table';
+import { TableRow } from '@tiptap/extension-table-row';
+import { TableCell } from '@tiptap/extension-table-cell';
+import { TableHeader } from '@tiptap/extension-table-header';
 import { TextStyle } from '@tiptap/extension-text-style';
 import Color from '@tiptap/extension-color';
 import { Extension } from '@tiptap/core';
@@ -36,6 +40,10 @@ import {
   AlignCenter,
   AlignRight,
   AlignJustify,
+  Table as TableIcon,
+  Plus,
+  Minus,
+  Trash2,
 } from 'lucide-react';
 import {
   Popover,
@@ -139,6 +147,23 @@ const RichTextEditor = ({ content, onChange }: RichTextEditorProps) => {
       Underline,
       TextAlign.configure({
         types: ['heading', 'paragraph'],
+      }),
+      Table.configure({
+        resizable: true,
+        HTMLAttributes: {
+          class: 'border-collapse border border-border',
+        },
+      }),
+      TableRow,
+      TableHeader.configure({
+        HTMLAttributes: {
+          class: 'border border-border bg-muted font-semibold p-2',
+        },
+      }),
+      TableCell.configure({
+        HTMLAttributes: {
+          class: 'border border-border p-2',
+        },
       }),
       Image.configure({
         HTMLAttributes: {
@@ -514,6 +539,89 @@ const RichTextEditor = ({ content, onChange }: RichTextEditorProps) => {
                   </Button>
                 </div>
               </div>
+            </div>
+          </PopoverContent>
+        </Popover>
+
+        {/* Table controls */}
+        <Popover>
+          <PopoverTrigger asChild>
+            <Button
+              type="button"
+              variant={editor.isActive('table') ? 'secondary' : 'ghost'}
+              size="sm"
+            >
+              <TableIcon className="h-4 w-4" />
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="w-56 p-2">
+            <div className="space-y-1">
+              <Button
+                type="button"
+                variant="ghost"
+                size="sm"
+                className="w-full justify-start gap-2"
+                onClick={() => editor.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run()}
+              >
+                <Plus className="h-4 w-4" />
+                Insert Table (3x3)
+              </Button>
+              {editor.isActive('table') && (
+                <>
+                  <div className="h-px bg-border my-1" />
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="sm"
+                    className="w-full justify-start gap-2"
+                    onClick={() => editor.chain().focus().addColumnAfter().run()}
+                  >
+                    <Plus className="h-4 w-4" />
+                    Add Column
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="sm"
+                    className="w-full justify-start gap-2"
+                    onClick={() => editor.chain().focus().addRowAfter().run()}
+                  >
+                    <Plus className="h-4 w-4" />
+                    Add Row
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="sm"
+                    className="w-full justify-start gap-2"
+                    onClick={() => editor.chain().focus().deleteColumn().run()}
+                  >
+                    <Minus className="h-4 w-4" />
+                    Delete Column
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="sm"
+                    className="w-full justify-start gap-2"
+                    onClick={() => editor.chain().focus().deleteRow().run()}
+                  >
+                    <Minus className="h-4 w-4" />
+                    Delete Row
+                  </Button>
+                  <div className="h-px bg-border my-1" />
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="sm"
+                    className="w-full justify-start gap-2 text-destructive"
+                    onClick={() => editor.chain().focus().deleteTable().run()}
+                  >
+                    <Trash2 className="h-4 w-4" />
+                    Delete Table
+                  </Button>
+                </>
+              )}
             </div>
           </PopoverContent>
         </Popover>

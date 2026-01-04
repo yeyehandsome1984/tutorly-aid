@@ -137,3 +137,50 @@ All colors MUST be HSL.
 .prose p {
   margin-bottom: 1rem;
 }
+
+/* Table styling for blog content */
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+.prose th,
+.prose td {
+  border: 1px solid hsl(var(--border));
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.prose th {
+  background-color: hsl(var(--muted));
+  font-weight: 600;
+}
+
+.prose tr:nth-child(even) {
+  background-color: hsl(var(--muted) / 0.3);
+}
+
+/* TipTap editor table styling */
+.ProseMirror table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.ProseMirror th,
+.ProseMirror td {
+  border: 1px solid hsl(var(--border));
+  padding: 0.5rem;
+  min-width: 50px;
+  vertical-align: top;
+}
+
+.ProseMirror th {
+  background-color: hsl(var(--muted));
+  font-weight: 600;
+}
+
+.ProseMirror .selectedCell {
+  background-color: hsl(var(--primary) / 0.1);
+}
