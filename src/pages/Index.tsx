@@ -40,6 +40,11 @@ const faqs = [
     answer:
       "Yes, we can arrange a trial lesson for you. Pricing will be discussed through WhatsApp or call separately.",
   },
+  {
+    question: "What languages can lessons be conducted in?",
+    answer:
+      "We can conduct lessons in both English and Mandarin (Chinese). Two of our tutors are native Chinese speakers, and one is very fluent in Mandarin, so students can learn comfortably in their preferred language.",
+  },
 ];
 
 interface TutorPreview {
@@ -89,7 +94,7 @@ const Index = () => {
       icon: GraduationCap,
       title: "Quality and patient Tutors",
       description:
-        "Learn from experienced tutor or top students from respective subjects. We are able to tutor in both English and 中文",
+        "Learn from experienced tutor or top students from respective subjects. Tutors are bilingual, so lesson can be conducted in English or Mandarin(中文）",
     },
     {
       icon: Headphones,
@@ -119,8 +124,8 @@ const Index = () => {
             Excel in Your JC Commerce Stream with Excellent Tuition Team
           </h1>
           <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto text-white/95 drop-shadow-md">
-            Effective Tuition for A-Level commerce stream subjects, including POA, MOB, Mathematics, and Economics.
-            Let's achieve academic excellence with dedicated team of tutors!
+            Effective Tuition for A-Level commerce stream subjects, including POA(会计), MOB(商业),
+            Mathematics(数学),and Economics(经济). Let's achieve academic excellence with dedicated team of tutors!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/auth">
