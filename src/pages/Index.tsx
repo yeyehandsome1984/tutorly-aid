@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import SEO from "@/components/SEO";
 import FAQSchema from "@/components/FAQSchema";
+import Testimonials from "@/components/Testimonials";
 
 const faqs = [
   {
@@ -226,8 +227,11 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <Testimonials />
+
       {/* FAQ Section */}
-      <section className="py-16 bg-muted">
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Frequently Asked Questions</h2>
           <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
