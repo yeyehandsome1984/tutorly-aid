@@ -26,7 +26,7 @@ const Navigation = () => {
     { to: "/", label: "Home" },
     { to: "/tutors", label: "Tutors" },
     { to: "/subjects", label: "Subjects" },
-    { to: "/questions", label: "Q&A" },
+    { to: "/questions", label: "FAQ" },
   ];
 
   return (
