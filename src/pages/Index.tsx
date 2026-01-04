@@ -279,7 +279,7 @@ const Index = () => {
       <footer className="bg-primary text-primary-foreground py-8">
         <div className="container mx-auto px-4 text-center">
           <p className="text-sm opacity-80">
-            © 2024 MI Tuition. Expert tuition for POA, MOB, Mathematics, and Economics in Singapore.
+            © {new Date().getFullYear()} MI Tuition. Expert tuition for POA, MOB, Mathematics, and Economics in Singapore.
           </p>
         </div>
       </footer>

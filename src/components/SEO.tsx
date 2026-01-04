@@ -28,6 +28,11 @@ const SEO = ({
       <meta name="keywords" content={keywords} />
       {noIndex && <meta name="robots" content="noindex, nofollow" />}
       <link rel="canonical" href={fullCanonicalUrl} />
+      
+      {/* Hreflang for multilingual SEO */}
+      <link rel="alternate" hrefLang="en" href={fullCanonicalUrl} />
+      <link rel="alternate" hrefLang="zh" href={fullCanonicalUrl} />
+      <link rel="alternate" hrefLang="x-default" href={fullCanonicalUrl} />
 
       {/* Open Graph */}
       <meta property="og:type" content="website" />

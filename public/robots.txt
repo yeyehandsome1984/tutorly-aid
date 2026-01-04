@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://micommercestreamtuition.com/sitemap.xml
+Sitemap: https://wqfufsrzngvdetdvcylm.supabase.co/functions/v1/sitemap
