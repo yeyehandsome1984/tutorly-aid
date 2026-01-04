@@ -14,48 +14,6 @@ export type Database = {
   }
   public: {
     Tables: {
-      answers: {
-        Row: {
-          content: string
-          created_at: string
-          id: string
-          question_id: string
-          tutor_id: string
-          updated_at: string
-        }
-        Insert: {
-          content: string
-          created_at?: string
-          id?: string
-          question_id: string
-          tutor_id: string
-          updated_at?: string
-        }
-        Update: {
-          content?: string
-          created_at?: string
-          id?: string
-          question_id?: string
-          tutor_id?: string
-          updated_at?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "answers_question_id_fkey"
-            columns: ["question_id"]
-            isOneToOne: false
-            referencedRelation: "questions"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "answers_tutor_id_fkey"
-            columns: ["tutor_id"]
-            isOneToOne: false
-            referencedRelation: "tutors"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
       content: {
         Row: {
           body: string | null
@@ -93,76 +51,6 @@ export type Database = {
             columns: ["topic_id"]
             isOneToOne: false
             referencedRelation: "topics"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      question_attachments: {
-        Row: {
-          created_at: string
-          file_name: string
-          file_path: string
-          id: string
-          question_id: string
-        }
-        Insert: {
-          created_at?: string
-          file_name: string
-          file_path: string
-          id?: string
-          question_id: string
-        }
-        Update: {
-          created_at?: string
-          file_name?: string
-          file_path?: string
-          id?: string
-          question_id?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "question_attachments_question_id_fkey"
-            columns: ["question_id"]
-            isOneToOne: false
-            referencedRelation: "questions"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      questions: {
-        Row: {
-          content: string
-          created_at: string
-          id: string
-          student_id: string
-          subject_id: string | null
-          title: string
-          updated_at: string
-        }
-        Insert: {
-          content: string
-          created_at?: string
-          id?: string
-          student_id: string
-          subject_id?: string | null
-          title: string
-          updated_at?: string
-        }
-        Update: {
-          content?: string
-          created_at?: string
-          id?: string
-          student_id?: string
-          subject_id?: string | null
-          title?: string
-          updated_at?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "questions_subject_id_fkey"
-            columns: ["subject_id"]
-            isOneToOne: false
-            referencedRelation: "subjects"
             referencedColumns: ["id"]
           },
         ]

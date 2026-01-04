@@ -8,8 +8,7 @@ import Index from "./pages/Index";
 import Tutors from "./pages/Tutors";
 import Subjects from "./pages/Subjects";
 import Auth from "./pages/Auth";
-import Questions from "./pages/Questions";
-import QuestionDetail from "./pages/QuestionDetail";
+import FAQ from "./pages/Questions";
 import AdminLayout from "./pages/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import TutorsManagement from "./pages/admin/TutorsManagement";
@@ -19,7 +18,6 @@ import ContentManagement from "./pages/admin/ContentManagement";
 import TutorSubjectsManagement from "./pages/admin/TutorSubjectsManagement";
 import TutorLayout from "./pages/tutor/TutorLayout";
 import TutorDashboard from "./pages/tutor/TutorDashboard";
-import TutorQuestionsManagement from "./pages/tutor/TutorQuestionsManagement";
 import NotFound from "./pages/NotFound";
 import Navigation from "./components/Navigation";
 import AuthRecoveryRedirect from "./components/AuthRecoveryRedirect";
@@ -40,8 +38,7 @@ const App = () => (
             <Route path="/tutors" element={<Tutors />} />
             <Route path="/subjects" element={<Subjects />} />
             <Route path="/auth" element={<Auth />} />
-            <Route path="/questions" element={<Questions />} />
-            <Route path="/questions/:id" element={<QuestionDetail />} />
+            <Route path="/faq" element={<FAQ />} />
             <Route path="/admin" element={<AdminLayout />}>
               <Route index element={<AdminDashboard />} />
               <Route path="tutors" element={<TutorsManagement />} />
@@ -52,7 +49,6 @@ const App = () => (
             </Route>
             <Route path="/tutor" element={<TutorLayout />}>
               <Route index element={<TutorDashboard />} />
-              <Route path="questions" element={<TutorQuestionsManagement />} />
             </Route>
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
