@@ -138,7 +138,7 @@ const Index = () => {
             <a href="https://wa.me/6585116415" target="_blank" rel="noopener noreferrer">
               <Button
                 size="lg"
-                variant="hero"
+                variant="secondary"
                 className="text-lg"
               >
                 <Phone className="mr-2 h-5 w-5" />
