@@ -1,4 +1,7 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
+import { Phone, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
 import FAQSchema from "@/components/FAQSchema";
 
@@ -63,6 +66,39 @@ const Questions = () => {
               </AccordionItem>
             ))}
           </Accordion>
+        </div>
+
+        {/* Cross-linking section */}
+        <div className="mt-16 max-w-3xl">
+          <h2 className="text-2xl font-bold mb-4">Still Have Questions?</h2>
+          <p className="text-muted-foreground mb-6">
+            Contact us directly or explore more about our tutors and subjects
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 px-0">
+            <a href="https://wa.me/6585116415" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+              <Button size="lg" variant="default" className="w-full sm:w-auto">
+                <Phone className="mr-2 h-5 w-5" />
+                WhatsApp Us
+              </Button>
+            </a>
+            <a href="mailto:yichenue@gmail.com" className="w-full sm:w-auto">
+              <Button size="lg" variant="outline" className="w-full sm:w-auto">
+                <Mail className="mr-2 h-5 w-5" />
+                Email Us
+              </Button>
+            </a>
+          </div>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <Link to="/tutors" className="text-primary hover:underline font-medium">
+              Meet Our Tutors →
+            </Link>
+            <Link to="/subjects" className="text-primary hover:underline font-medium">
+              View Subjects →
+            </Link>
+            <Link to="/" className="text-primary hover:underline font-medium">
+              Back to Home →
+            </Link>
+          </div>
         </div>
       </div>
     </div>
