@@ -128,7 +128,7 @@ const Index = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="https://wa.me/6585116415" target="_blank" rel="noopener noreferrer">
-              <Button size="lg" variant="hero" className="text-lg">
+              <Button size="lg" className="text-lg bg-[hsl(142,70%,40%)] hover:bg-[hsl(142,70%,35%)] text-white border-0">
                 <Phone className="mr-2 h-5 w-5" />
                 WhatsApp Us
               </Button>
