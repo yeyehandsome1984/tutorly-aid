@@ -10,33 +10,48 @@ import SEO from "@/components/SEO";
 
 const Auth = () => {
   const navigate = useNavigate();
+
+  const isRecoveryLink = () => {
+    if (typeof window === "undefined") return false;
+    const hash = window.location.hash ?? "";
+    const search = window.location.search ?? "";
+    return hash.includes("type=recovery") || search.includes("type=recovery");
+  };
+
   const [isLogin, setIsLogin] = useState(true);
   const [isForgotPassword, setIsForgotPassword] = useState(false);
-  const [isPasswordReset, setIsPasswordReset] = useState(false);
+  const [isPasswordReset, setIsPasswordReset] = useState(() => isRecoveryLink());
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    let recoveryFlow = isRecoveryLink();
+    if (recoveryFlow) setIsPasswordReset(true);
+
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((event, session) => {
+    } = supabase.auth.onAuthStateChange((event) => {
       if (event === "PASSWORD_RECOVERY") {
+        recoveryFlow = true;
         setIsPasswordReset(true);
-      } else if (event === "SIGNED_IN" && !isPasswordReset) {
+        return;
+      }
+
+      if (event === "SIGNED_IN" && !recoveryFlow) {
         navigate("/");
       }
     });
 
     supabase.auth.getSession().then(({ data: { session } }) => {
-      if (session && !isPasswordReset) {
+      if (session && !recoveryFlow) {
         navigate("/");
       }
     });
 
     return () => subscription.unsubscribe();
-  }, [navigate, isPasswordReset]);
+  }, [navigate]);
 
   const handleAuth = async (e: React.FormEvent) => {
     e.preventDefault();
