@@ -7,7 +7,7 @@ import SEO from "@/components/SEO";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import { optimizeHtmlImages } from "@/lib/image-optimizer";
+import { optimizeBlogContent } from "@/lib/image-optimizer";
 
 interface BlogPostData {
   id: string;
@@ -104,7 +104,7 @@ const BlogPost = () => {
 
   // Memoize optimized content to avoid re-processing on every render
   const optimizedContent = useMemo(() => {
-    return optimizeHtmlImages(post.content);
+    return optimizeBlogContent(post.content);
   }, [post.content]);
 
   return (
@@ -167,7 +167,20 @@ const BlogPost = () => {
       <section className="py-12">
         <div className="container mx-auto px-4">
           <div 
-            className="max-w-3xl mx-auto prose prose-lg prose-p:mb-4 prose-p:leading-relaxed prose-headings:mt-8 prose-headings:mb-4 prose-ul:my-4 prose-ol:my-4 prose-li:my-1 [&>p]:mb-4 [&>p:empty]:min-h-[1em] [&>p:empty]:mb-2 [&_img]:rounded-lg [&_img]:max-w-full [&_picture]:block [&_picture]:my-4"
+            className="max-w-3xl mx-auto prose prose-lg 
+              prose-p:mb-4 prose-p:leading-relaxed prose-p:text-foreground
+              prose-headings:mt-8 prose-headings:mb-4 prose-headings:text-foreground
+              prose-ul:my-4 prose-ol:my-4 prose-li:my-1 prose-li:text-foreground
+              prose-strong:text-foreground prose-strong:font-semibold
+              [&>p]:mb-4 [&>p:empty]:min-h-[1em] [&>p:empty]:mb-2 
+              [&_img]:rounded-lg [&_img]:max-w-full [&_picture]:block [&_picture]:my-4
+              [&_table]:w-full [&_table]:border-collapse [&_table]:my-6
+              [&_th]:bg-muted [&_th]:text-foreground [&_th]:font-semibold [&_th]:text-left [&_th]:p-3 [&_th]:border [&_th]:border-border
+              [&_td]:text-foreground [&_td]:p-3 [&_td]:border [&_td]:border-border [&_td]:align-top
+              [&_tr:nth-child(even)]:bg-muted/30
+              [&_a]:text-primary [&_a]:no-underline hover:[&_a]:underline
+              [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:list-decimal [&_ol]:pl-6
+              [&_td_ul]:my-0 [&_td_ol]:my-0 [&_td_li]:my-1"
             dangerouslySetInnerHTML={{ __html: optimizedContent }}
           />
         </div>
