@@ -29,6 +29,7 @@ import { toast } from "sonner";
 import { Plus, Pencil, Trash2, Eye, EyeOff, MapPin, Download, Copy, CheckCircle } from "lucide-react";
 import RichTextEditor from "@/components/RichTextEditor";
 import { generateSitemapXml, downloadSitemapXml, copySitemapToClipboard } from "@/lib/sitemap-generator";
+import { sanitizeBlogContent } from "@/lib/content-sanitizer";
 
 interface BlogPost {
   id: string;
@@ -181,12 +182,15 @@ const BlogManagement = () => {
     // Auto-generate slug from title if not provided
     const finalSlug = formData.slug.trim() || generateSlug(formData.title);
     
+    // Sanitize content to remove legacy inline styles
+    const sanitizedContent = sanitizeBlogContent(formData.content);
+    
     const postData = {
       slug: finalSlug,
       title: formData.title,
       title_chinese: formData.title_chinese || null,
       excerpt: formData.excerpt,
-      content: formData.content,
+      content: sanitizedContent,
       category: formData.category,
       keywords: formData.keywords.split(",").map((k) => k.trim()).filter(Boolean),
       read_time: formData.read_time,
