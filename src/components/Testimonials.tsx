@@ -13,22 +13,40 @@ interface Testimonial {
 }
 
 const TestimonialsSchema = ({ testimonials }: { testimonials: Testimonial[] }) => {
+  // Calculate actual average rating
+  const totalRating = testimonials.reduce((sum, t) => sum + t.rating, 0);
+  const averageRating = testimonials.length > 0 
+    ? Math.round((totalRating / testimonials.length) * 10) / 10 
+    : 5;
+
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
-    "name": "MI Tuition",
-    "description": "Expert tuition for A-Level POA, MOB, Mathematics, and Economics in Singapore",
+    "@id": "https://micommercestreamtuition.com/#organization",
+    "name": "MI Commerce Stream Tuition",
+    "alternateName": ["MI Tuition", "MI Commerce Tuition"],
+    "description": "Expert tuition for A-Level POA, MOB, Mathematics, and Economics in Singapore. 专业A水准补习。",
     "url": "https://micommercestreamtuition.com",
+    "telephone": "+65 8511 6415",
+    "email": "yichenue@gmail.com",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": averageRating,
+      "reviewCount": testimonials.length,
+      "bestRating": 5,
+      "worstRating": 1
+    },
     "review": testimonials.map((t) => ({
       "@type": "Review",
       "reviewRating": {
         "@type": "Rating",
         "ratingValue": t.rating,
         "bestRating": 5,
+        "worstRating": 1
       },
       "author": {
         "@type": "Person",
-        "name": t.name,
+        "name": t.name
       },
       "reviewBody": t.comment,
       "itemReviewed": {
@@ -36,17 +54,11 @@ const TestimonialsSchema = ({ testimonials }: { testimonials: Testimonial[] }) =
         "name": `${t.subject} Tuition`,
         "provider": {
           "@type": "EducationalOrganization",
-          "name": "MI Tuition",
-        },
-      },
-    })),
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": 5,
-      "reviewCount": testimonials.length,
-      "bestRating": 5,
-      "worstRating": 1,
-    },
+          "@id": "https://micommercestreamtuition.com/#organization",
+          "name": "MI Commerce Stream Tuition"
+        }
+      }
+    }))
   };
 
   return (
