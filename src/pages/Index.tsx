@@ -42,8 +42,7 @@ const faqs = [
   },
   {
     question: "What languages can lessons be conducted in?",
-    answer:
-      "Lessons can be conducted in English or Mandarin, depending on your preference and comfort level.",
+    answer: "Lessons can be conducted in English or Mandarin, depending on your preference and comfort level.",
   },
 ];
 
@@ -93,7 +92,8 @@ const Index = () => {
     {
       icon: GraduationCap,
       title: "Quality and patient Tutors",
-      description: "Learn from experienced tutor or top students from respective subjects",
+      description:
+        "Learn from experienced tutor or top students from respective subjects. Tutors are able to teach either in English or 中文",
     },
     {
       icon: Headphones,
