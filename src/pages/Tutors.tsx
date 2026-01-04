@@ -32,10 +32,7 @@ const Tutors = () => {
 
   const fetchTutors = async () => {
     try {
-      const { data: tutorsData, error: tutorsError } = await supabase
-        .from("tutors")
-        .select("*")
-        .order("name");
+      const { data: tutorsData, error: tutorsError } = await supabase.from("tutors").select("*").order("name");
 
       if (tutorsError) throw tutorsError;
 
@@ -53,7 +50,7 @@ const Tutors = () => {
             })) || [];
 
           return { ...tutor, subjects };
-        })
+        }),
       );
 
       setTutors(tutorsWithSubjects);
@@ -84,7 +81,7 @@ const Tutors = () => {
       />
       <main className="container mx-auto px-4 py-12">
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Expert Tutors</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Tutors</h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Meet our dedicated team of experienced educators committed to your academic success
           </p>
@@ -95,9 +92,7 @@ const Tutors = () => {
             <Card key={tutor.id} className="shadow-card hover:shadow-elevated transition-shadow">
               <CardHeader>
                 <CardTitle className="text-2xl">{tutor.name}</CardTitle>
-                <CardDescription className="text-base mt-2 leading-relaxed">
-                  {tutor.introduction}
-                </CardDescription>
+                <CardDescription className="text-base mt-2 leading-relaxed">{tutor.introduction}</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2">

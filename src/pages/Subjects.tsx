@@ -23,10 +23,7 @@ const Subjects = () => {
 
   const fetchSubjects = async () => {
     try {
-      const { data, error } = await supabase
-        .from("subjects")
-        .select("*")
-        .order("name");
+      const { data, error } = await supabase.from("subjects").select("*").order("name");
 
       if (error) throw error;
       setSubjects(data || []);
@@ -68,15 +65,11 @@ const Subjects = () => {
             <Card key={subject.id} className="shadow-card hover:shadow-elevated transition-shadow">
               <CardHeader>
                 <CardTitle className="text-2xl">{subject.name}</CardTitle>
-                <CardDescription className="text-base mt-2">
-                  {subject.description}
-                </CardDescription>
+                <CardDescription className="text-base mt-2">{subject.description}</CardDescription>
               </CardHeader>
               <CardContent>
                 {subject.keywords && subject.keywords.length > 0 && (
-                  <p className="text-xs text-muted-foreground italic">
-                    Keywords: {subject.keywords.join(", ")}
-                  </p>
+                  <p className="text-xs text-muted-foreground italic">Keywords: {subject.keywords.join(", ")}</p>
                 )}
               </CardContent>
             </Card>
@@ -87,7 +80,7 @@ const Subjects = () => {
         <div className="mt-16 text-center">
           <h2 className="text-2xl font-bold mb-4">Ready to Get Started?</h2>
           <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-            Meet our expert tutors or contact us to arrange a trial lesson
+            Meet our tutors or contact us to arrange a trial lesson
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center px-4 sm:px-0">
             <Link to="/tutors" className="w-full sm:w-auto">
