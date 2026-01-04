@@ -168,6 +168,7 @@ const RichTextEditor = ({ content, onChange }: RichTextEditorProps) => {
       Image.configure({
         HTMLAttributes: {
           class: 'rounded-lg max-w-full',
+          loading: 'lazy',
         },
       }),
       Link.configure({
