@@ -16,7 +16,7 @@ const SEO = ({
   description = "Quality tuition to commerce stream A-level/JC subject including Principle of Accounting (POA), Management of Business (MOB), Economics and Mathematics. Online & offline classes. Targeting both private and MI students.",
   keywords = "Singapore tuition, POA tuition, MOB tuition, JC math tutor, economics tutor, ask questions online, JC tuition Singapore, accounting tutor, mathematics tuition",
   canonicalUrl,
-  ogImage = "https://micommercestreamtuition.com/og-image.png",
+  ogImage = "https://micommercestreamtuition.com/og-image-v2.png",
   noIndex = false,
 }: SEOProps) => {
   const fullCanonicalUrl = canonicalUrl ? `${PRODUCTION_URL}${canonicalUrl}` : PRODUCTION_URL;
