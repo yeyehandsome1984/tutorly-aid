@@ -90,7 +90,7 @@ const Tutors = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
           {tutors.map((tutor) => {
             // Split name to style parenthetical text differently
             const nameMatch = tutor.name.match(/^(.+?)(\s*\(.+\))$/);
