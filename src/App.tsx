@@ -22,6 +22,7 @@ import TutorDashboard from "./pages/tutor/TutorDashboard";
 import TutorQuestionsManagement from "./pages/tutor/TutorQuestionsManagement";
 import NotFound from "./pages/NotFound";
 import Navigation from "./components/Navigation";
+import AuthRecoveryRedirect from "./components/AuthRecoveryRedirect";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +33,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <AuthRecoveryRedirect />
           <Navigation />
           <Routes>
             <Route path="/" element={<Index />} />
