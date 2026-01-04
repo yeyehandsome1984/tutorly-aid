@@ -14,7 +14,7 @@ const PRODUCTION_URL = "https://micommercestreamtuition.com";
 const SEO = ({
   title = "MI Tuition - Quality JC/Alevel Commerce Stream Tuition for POA（会计）, MOB（商业）, Mathematics（数学） & Economics(经济） | Singapore",
   description = "Quality tuition to commerce stream A-level/JC subject including Principle of Accounting (POA) 会计, Management of Business (MOB）商业, Economics 经济 and Mathematics 数学. Online & offline classes. Targeting both private and MI students.",
-  keywords = "Singapore tuition,MI, POA tuition, MOB tuition, JC math tutor, economics tutor,  JC tuition Singapore, accounting tutor, mathematics tuition, A level POA, Principle of accounting tuition, Management of Business tuition, Commerce Stream tuition, 补习，",
+  keywords = "A-level tuition, POA tuition, Commerce Stream, MOB tuition, JC math tutor, economics tutor, ask questions online, JC tuition Singapore, accounting tutor, mathematics tuition, Management of Business Tuition, Principle of accounting tuition, Syllabus 9593, syllabus 9570, syllabus 9587, syllabus 8843, H2 Math, H1 Math, H2 POA, H2 MOB, syllabus 7087, MI, Millennia Institute (MI)",
   canonicalUrl,
   ogImage = "https://micommercestreamtuition.com/og-image-v2.png",
   noIndex = false,
