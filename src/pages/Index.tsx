@@ -40,11 +40,6 @@ const faqs = [
     answer:
       "Yes, we can arrange a trial lesson for you. Pricing will be discussed through WhatsApp or call separately.",
   },
-  {
-    question: "What languages can lessons be conducted in?",
-    answer:
-      "We can conduct lessons in both English and Mandarin (中文). Two of our tutors are native Chinese speakers, and one is very fluent in Mandarin, so students can learn comfortably in their preferred language.",
-  },
 ];
 
 interface TutorPreview {
@@ -124,23 +119,23 @@ const Index = () => {
           </h1>
           <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto text-white/95 drop-shadow-md">
             Effective Tuition for A-Level commerce stream subjects, including POA（会计）, MOB（商业）,
-            Mathematics(数学）, and Economics（经济）. Let's achieve academic excellence with dedicated team of tutors!
+            Mathematics（数学）, and Economics（经济）. Let's achieve academic excellence with dedicated team of tutors!
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center px-4 sm:px-0">
-            <Link to="/auth" className="w-full sm:w-auto">
-              <Button size="lg" variant="secondary" className="w-full sm:w-auto">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/auth">
+              <Button size="lg" variant="secondary">
                 Student Login
               </Button>
             </Link>
-            <a href="https://wa.me/6585116415" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-              <Button size="lg" variant="hero" className="w-full sm:w-auto">
-                <Phone className="mr-2 h-5 w-5" />
+            <a href="https://wa.me/6585116415" target="_blank" rel="noopener noreferrer">
+              <Button size="lg" variant="hero">
+                <Phone className="mr-2 h-4 w-4" />
                 WhatsApp Us
               </Button>
             </a>
-            <a href="mailto:yichenue@gmail.com" className="w-full sm:w-auto">
-              <Button size="lg" variant="hero" className="w-full sm:w-auto">
-                <Mail className="mr-2 h-5 w-5" />
+            <a href="mailto:yichenue@gmail.com">
+              <Button size="lg" variant="hero">
+                <Mail className="mr-2 h-4 w-4" />
                 Email Us
               </Button>
             </a>
@@ -253,16 +248,16 @@ const Index = () => {
           <p className="text-lg mb-8 max-w-2xl mx-auto text-primary-foreground/90">
             Join hundreds of students who have improved their grades with our expert tuition
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center px-4 sm:px-0">
-            <a href="https://wa.me/6585116415" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-              <Button size="lg" variant="default" className="w-full sm:w-auto">
-                <Phone className="mr-2 h-5 w-5" />
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="https://wa.me/6585116415" target="_blank" rel="noopener noreferrer">
+              <Button size="lg" variant="default">
+                <Phone className="mr-2 h-4 w-4" />
                 WhatsApp Us
               </Button>
             </a>
-            <a href="mailto:yichenue@gmail.com" className="w-full sm:w-auto">
-              <Button size="lg" variant="hero" className="w-full sm:w-auto">
-                <Mail className="mr-2 h-5 w-5" />
+            <a href="mailto:yichenue@gmail.com">
+              <Button size="lg" variant="hero">
+                <Mail className="mr-2 h-4 w-4" />
                 Email Us
               </Button>
             </a>
