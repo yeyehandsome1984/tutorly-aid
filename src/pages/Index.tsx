@@ -43,7 +43,7 @@ const faqs = [
   {
     question: "What languages can lessons be conducted in?",
     answer:
-      "We can conduct lessons in both English and Mandarin (Chinese). Two of our tutors are native Chinese speakers, and one is very fluent in Mandarin, so students can learn comfortably in their preferred language.",
+      "We can conduct lessons in both English and Mandarin (中文). Two of our tutors are native Chinese speakers, and one is very fluent in Mandarin, so students can learn comfortably in their preferred language.",
   },
 ];
 
@@ -236,9 +236,7 @@ const Index = () => {
               {faqs.map((faq, idx) => (
                 <AccordionItem key={idx} value={`item-${idx}`}>
                   <AccordionTrigger className="text-left">{faq.question}</AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground">
-                    {faq.answer}
-                  </AccordionContent>
+                  <AccordionContent className="text-muted-foreground">{faq.answer}</AccordionContent>
                 </AccordionItem>
               ))}
             </Accordion>
