@@ -127,11 +127,19 @@ const Index = () => {
             Excel in Your JC Commerce Stream with Excellent Tuition Team
           </h1>
           <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto text-white/95 drop-shadow-md">
-            Effective Tuition for A-Level commerce stream subjects, including <span className="whitespace-nowrap">POA（会计）</span>, <span className="whitespace-nowrap">MOB（商业）</span>, <span className="whitespace-nowrap">Mathematics（数学）</span>, and <span className="whitespace-nowrap">Economics（经济）</span>. Let's achieve academic excellence with dedicated team of tutors!
+            Effective Tuition for A-Level commerce stream subjects, including{" "}
+            <span className="whitespace-nowrap">POA（会计）</span>,{" "}
+            <span className="whitespace-nowrap">MOB（商业）</span>,{" "}
+            <span className="whitespace-nowrap">Mathematics（数学）</span>, and{" "}
+            <span className="whitespace-nowrap">Economics（经济）</span>. Let's achieve academic excellence with
+            dedicated team of tutors!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="https://wa.me/6585116415" target="_blank" rel="noopener noreferrer">
-              <Button size="lg" className="text-lg bg-[hsl(142,70%,40%)] hover:bg-[hsl(142,70%,35%)] text-white border-0">
+              <Button
+                size="lg"
+                className="text-lg bg-[hsl(142,70%,40%)] hover:bg-[hsl(142,70%,35%)] text-white border-0"
+              >
                 <Phone className="mr-2 h-5 w-5" />
                 WhatsApp Us
               </Button>
@@ -174,7 +182,7 @@ const Index = () => {
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Meet Our Tutors</h2>
             <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-              Our tutors provide best supports for your Alevel Journey
+              Our tutors provide best supports for your A-level Journey
             </p>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
               {tutors.map((tutor) => (
@@ -287,7 +295,8 @@ const Index = () => {
       <footer className="bg-primary text-primary-foreground py-8">
         <div className="container mx-auto px-4 text-center">
           <p className="text-sm opacity-80">
-            © {new Date().getFullYear()} MI Tuition. Expert tuition for POA, MOB, Mathematics, and Economics in Singapore.
+            © {new Date().getFullYear()} MI Tuition. Expert tuition for POA, MOB, Mathematics, and Economics in
+            Singapore.
           </p>
         </div>
       </footer>
