@@ -3,6 +3,7 @@ import StarterKit from '@tiptap/starter-kit';
 import Image from '@tiptap/extension-image';
 import Link from '@tiptap/extension-link';
 import Underline from '@tiptap/extension-underline';
+import TextAlign from '@tiptap/extension-text-align';
 import { TextStyle } from '@tiptap/extension-text-style';
 import Color from '@tiptap/extension-color';
 import { Extension } from '@tiptap/core';
@@ -31,6 +32,10 @@ import {
   Loader2,
   Type,
   Palette,
+  AlignLeft,
+  AlignCenter,
+  AlignRight,
+  AlignJustify,
 } from 'lucide-react';
 import {
   Popover,
@@ -132,6 +137,9 @@ const RichTextEditor = ({ content, onChange }: RichTextEditorProps) => {
       Color,
       FontSize,
       Underline,
+      TextAlign.configure({
+        types: ['heading', 'paragraph'],
+      }),
       Image.configure({
         HTMLAttributes: {
           class: 'rounded-lg max-w-full',
@@ -369,6 +377,41 @@ const RichTextEditor = ({ content, onChange }: RichTextEditorProps) => {
           onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
         >
           <Heading3 className="h-4 w-4" />
+        </Button>
+
+        <div className="w-px h-6 bg-border mx-1" />
+
+        <Button
+          type="button"
+          variant={editor.isActive({ textAlign: 'left' }) ? 'secondary' : 'ghost'}
+          size="sm"
+          onClick={() => editor.chain().focus().setTextAlign('left').run()}
+        >
+          <AlignLeft className="h-4 w-4" />
+        </Button>
+        <Button
+          type="button"
+          variant={editor.isActive({ textAlign: 'center' }) ? 'secondary' : 'ghost'}
+          size="sm"
+          onClick={() => editor.chain().focus().setTextAlign('center').run()}
+        >
+          <AlignCenter className="h-4 w-4" />
+        </Button>
+        <Button
+          type="button"
+          variant={editor.isActive({ textAlign: 'right' }) ? 'secondary' : 'ghost'}
+          size="sm"
+          onClick={() => editor.chain().focus().setTextAlign('right').run()}
+        >
+          <AlignRight className="h-4 w-4" />
+        </Button>
+        <Button
+          type="button"
+          variant={editor.isActive({ textAlign: 'justify' }) ? 'secondary' : 'ghost'}
+          size="sm"
+          onClick={() => editor.chain().focus().setTextAlign('justify').run()}
+        >
+          <AlignJustify className="h-4 w-4" />
         </Button>
 
         <div className="w-px h-6 bg-border mx-1" />
