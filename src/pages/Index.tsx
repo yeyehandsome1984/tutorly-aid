@@ -10,6 +10,7 @@ import SEO from "@/components/SEO";
 import FAQSchema from "@/components/FAQSchema";
 import Testimonials from "@/components/Testimonials";
 import EducationalOrganizationSchema from "@/components/EducationalOrganizationSchema";
+import LazySection from "@/components/LazySection";
 
 const faqs = [
   {
@@ -167,110 +168,120 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Tutors Preview */}
-      <section className="py-8 bg-muted">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Meet Our Tutors</h2>
-          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-            Our tutors provide best supports for your Alevel Journey
-          </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-            {tutors.map((tutor) => (
-              <Card key={tutor.id} className="shadow-card">
-                <CardHeader>
-                  <CardTitle className="text-xl">{tutor.name}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {tutor.subjects.map((subject, sidx) => (
-                      <Badge key={sidx} variant="secondary">
-                        {subject}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-          <div className="text-center mt-8">
-            <Link to="/tutors">
-              <Button variant="default">View All Tutors</Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Subjects Section */}
-      <section className="py-8">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Subjects We Offer</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-            {["H2 Principles of Accounting", "H2 Management of Business", "H1&2 Mathematics", "H1&2 Economics"].map(
-              (subject, idx) => (
-                <Card key={idx} className="shadow-card hover:shadow-elevated transition-shadow">
+      {/* Tutors Preview - Lazy Loaded */}
+      <LazySection>
+        <section className="py-8 bg-muted">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Meet Our Tutors</h2>
+            <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+              Our tutors provide best supports for your Alevel Journey
+            </p>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+              {tutors.map((tutor) => (
+                <Card key={tutor.id} className="shadow-card">
                   <CardHeader>
-                    <CardTitle className="text-lg text-center">{subject}</CardTitle>
+                    <CardTitle className="text-xl">{tutor.name}</CardTitle>
                   </CardHeader>
+                  <CardContent>
+                    <div className="flex flex-wrap gap-2">
+                      {tutor.subjects.map((subject, sidx) => (
+                        <Badge key={sidx} variant="secondary">
+                          {subject}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
                 </Card>
-              ),
-            )}
-          </div>
-          <div className="text-center mt-8">
-            <Link to="/subjects">
-              <Button variant="default">Explore Subjects</Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <Testimonials />
-
-      {/* FAQ Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Frequently Asked Questions</h2>
-          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-            Find answers to common questions about our tuition services
-          </p>
-          <div className="max-w-3xl mx-auto">
-            <Accordion type="single" collapsible className="w-full">
-              {faqs.map((faq, idx) => (
-                <AccordionItem key={idx} value={`item-${idx}`}>
-                  <AccordionTrigger className="text-left">{faq.question}</AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground">{faq.answer}</AccordionContent>
-                </AccordionItem>
               ))}
-            </Accordion>
+            </div>
+            <div className="text-center mt-8">
+              <Link to="/tutors">
+                <Button variant="default">View All Tutors</Button>
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </LazySection>
 
-      {/* CTA Section */}
-      <section className="gradient-red py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-foreground">
-            Ready to Excel in Your Studies?
-          </h2>
-          <p className="text-lg mb-8 max-w-2xl mx-auto text-primary-foreground/90">
-            Join hundreds of students who have improved their grades with our expert tuition
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://wa.me/6585116415" target="_blank" rel="noopener noreferrer">
-              <Button size="lg" variant="default">
-                <Phone className="mr-2 h-4 w-4" />
-                WhatsApp Us
-              </Button>
-            </a>
-            <a href="mailto:yichenue@gmail.com">
-              <Button size="lg" variant="hero">
-                <Mail className="mr-2 h-4 w-4" />
-                Email Us
-              </Button>
-            </a>
+      {/* Subjects Section - Lazy Loaded */}
+      <LazySection>
+        <section className="py-8">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Subjects We Offer</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+              {["H2 Principles of Accounting", "H2 Management of Business", "H1&2 Mathematics", "H1&2 Economics"].map(
+                (subject, idx) => (
+                  <Card key={idx} className="shadow-card hover:shadow-elevated transition-shadow">
+                    <CardHeader>
+                      <CardTitle className="text-lg text-center">{subject}</CardTitle>
+                    </CardHeader>
+                  </Card>
+                ),
+              )}
+            </div>
+            <div className="text-center mt-8">
+              <Link to="/subjects">
+                <Button variant="default">Explore Subjects</Button>
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </LazySection>
+
+      {/* Testimonials Section - Lazy Loaded */}
+      <LazySection>
+        <Testimonials />
+      </LazySection>
+
+      {/* FAQ Section - Lazy Loaded */}
+      <LazySection>
+        <section className="py-16">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Frequently Asked Questions</h2>
+            <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+              Find answers to common questions about our tuition services
+            </p>
+            <div className="max-w-3xl mx-auto">
+              <Accordion type="single" collapsible className="w-full">
+                {faqs.map((faq, idx) => (
+                  <AccordionItem key={idx} value={`item-${idx}`}>
+                    <AccordionTrigger className="text-left">{faq.question}</AccordionTrigger>
+                    <AccordionContent className="text-muted-foreground">{faq.answer}</AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
+          </div>
+        </section>
+      </LazySection>
+
+      {/* CTA Section - Lazy Loaded */}
+      <LazySection>
+        <section className="gradient-red py-16">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-foreground">
+              Ready to Excel in Your Studies?
+            </h2>
+            <p className="text-lg mb-8 max-w-2xl mx-auto text-primary-foreground/90">
+              Join hundreds of students who have improved their grades with our expert tuition
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="https://wa.me/6585116415" target="_blank" rel="noopener noreferrer">
+                <Button size="lg" variant="default">
+                  <Phone className="mr-2 h-4 w-4" />
+                  WhatsApp Us
+                </Button>
+              </a>
+              <a href="mailto:yichenue@gmail.com">
+                <Button size="lg" variant="hero">
+                  <Mail className="mr-2 h-4 w-4" />
+                  Email Us
+                </Button>
+              </a>
+            </div>
+          </div>
+        </section>
+      </LazySection>
 
       {/* Footer */}
       <footer className="bg-primary text-primary-foreground py-8">
