@@ -25,6 +25,7 @@ import {
 } from "@/components/ui/table";
 import { toast } from "sonner";
 import { Plus, Pencil, Trash2, Eye, EyeOff } from "lucide-react";
+import RichTextEditor from "@/components/RichTextEditor";
 
 interface BlogPost {
   id: string;
@@ -187,7 +188,7 @@ const BlogManagement = () => {
       <div className="flex justify-between items-center mb-6">
         <div>
           <h1 className="text-3xl font-bold">Blog Management</h1>
-          <p className="text-muted-foreground">Create and manage blog posts</p>
+          <p className="text-muted-foreground">Create and manage blog posts with rich text editing</p>
         </div>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
@@ -195,7 +196,7 @@ const BlogManagement = () => {
               <Plus className="h-4 w-4 mr-2" /> Add Blog Post
             </Button>
           </DialogTrigger>
-          <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+          <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle>
                 {editingPost ? "Edit Blog Post" : "Add New Blog Post"}
@@ -284,14 +285,10 @@ const BlogManagement = () => {
               </div>
 
               <div>
-                <Label htmlFor="content">Content (HTML/Markdown) *</Label>
-                <Textarea
-                  id="content"
-                  value={formData.content}
-                  onChange={(e) => setFormData({ ...formData, content: e.target.value })}
-                  rows={10}
-                  placeholder="Enter the full blog post content..."
-                  required
+                <Label>Content *</Label>
+                <RichTextEditor
+                  content={formData.content}
+                  onChange={(content) => setFormData({ ...formData, content })}
                 />
               </div>
 
