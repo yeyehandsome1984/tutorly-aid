@@ -5,6 +5,8 @@ import { Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import SEO from "@/components/SEO";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import CourseSchema from "@/components/CourseSchema";
 
 interface Subject {
   id: string;
@@ -52,7 +54,9 @@ const Subjects = () => {
         keywords="A-level tuition, POA tuition, Commerce Stream, MOB tuition, JC math tutor, economics tutor, ask questions online, JC tuition Singapore, accounting tutor, mathematics tuition, Management of Business Tuition, Principle of accounting tuition, Syllabus 9593, syllabus 9570, syllabus 9587, syllabus 8843, H2 Math, H1 Math, H2 POA, H2 MOB, syllabus 7087, MI, Millennia Institute (MI), 补习, 会计, 商业, 数学, 经济, A水准"
         canonicalUrl="/subjects"
       />
+      <CourseSchema courses={subjects} />
       <main className="container mx-auto px-4 py-12">
+        <Breadcrumbs className="mb-6" />
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Subjects We Teach</h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">

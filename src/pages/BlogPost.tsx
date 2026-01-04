@@ -5,6 +5,7 @@ import { Calendar, Clock, ArrowLeft, Phone } from "lucide-react";
 import SEO from "@/components/SEO";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 interface BlogPostData {
   id: string;
@@ -108,6 +109,17 @@ const BlogPost = () => {
         canonicalUrl={`/blog/${post.slug}`}
       />
       <BlogPostSchema post={post} />
+
+      {/* Breadcrumbs */}
+      <div className="container mx-auto px-4 pt-6">
+        <Breadcrumbs 
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Blog", href: "/blog" },
+            { label: post.title }
+          ]} 
+        />
+      </div>
 
       {/* Header */}
       <section className="gradient-hero py-12">
