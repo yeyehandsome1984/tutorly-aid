@@ -2,6 +2,9 @@ import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Image from '@tiptap/extension-image';
 import Link from '@tiptap/extension-link';
+import { TextStyle } from '@tiptap/extension-text-style';
+import Color from '@tiptap/extension-color';
+import { Extension } from '@tiptap/core';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -24,6 +27,8 @@ import {
   Heading3,
   Code,
   Loader2,
+  Type,
+  Palette,
 } from 'lucide-react';
 import {
   Popover,
@@ -31,10 +36,81 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover';
 
+// Custom FontSize extension
+const FontSize = Extension.create({
+  name: 'fontSize',
+
+  addOptions() {
+    return {
+      types: ['textStyle'],
+    };
+  },
+
+  addGlobalAttributes() {
+    return [
+      {
+        types: this.options.types,
+        attributes: {
+          fontSize: {
+            default: null,
+            parseHTML: element => element.style.fontSize?.replace(/['"]+/g, ''),
+            renderHTML: attributes => {
+              if (!attributes.fontSize) {
+                return {};
+              }
+              return {
+                style: `font-size: ${attributes.fontSize}`,
+              };
+            },
+          },
+        },
+      },
+    ];
+  },
+
+  addCommands() {
+    return {
+      setFontSize: (fontSize: string) => ({ chain }: any) => {
+        return chain()
+          .setMark('textStyle', { fontSize })
+          .run();
+      },
+      unsetFontSize: () => ({ chain }: any) => {
+        return chain()
+          .setMark('textStyle', { fontSize: null })
+          .removeEmptyTextStyle()
+          .run();
+      },
+    };
+  },
+});
+
 interface RichTextEditorProps {
   content: string;
   onChange: (content: string) => void;
 }
+
+const fontSizes = [
+  { label: 'Small', value: '12px' },
+  { label: 'Normal', value: '16px' },
+  { label: 'Large', value: '20px' },
+  { label: 'X-Large', value: '24px' },
+  { label: 'XX-Large', value: '32px' },
+  { label: 'Huge', value: '48px' },
+];
+
+const colors = [
+  { label: 'Default', value: '' },
+  { label: 'Black', value: '#000000' },
+  { label: 'Gray', value: '#6B7280' },
+  { label: 'Red', value: '#EF4444' },
+  { label: 'Orange', value: '#F97316' },
+  { label: 'Yellow', value: '#EAB308' },
+  { label: 'Green', value: '#22C55E' },
+  { label: 'Blue', value: '#3B82F6' },
+  { label: 'Purple', value: '#8B5CF6' },
+  { label: 'Pink', value: '#EC4899' },
+];
 
 const RichTextEditor = ({ content, onChange }: RichTextEditorProps) => {
   const [isUploading, setIsUploading] = useState(false);
@@ -44,6 +120,9 @@ const RichTextEditor = ({ content, onChange }: RichTextEditorProps) => {
   const editor = useEditor({
     extensions: [
       StarterKit,
+      TextStyle,
+      Color,
+      FontSize,
       Image.configure({
         HTMLAttributes: {
           class: 'rounded-lg max-w-full',
@@ -125,6 +204,9 @@ const RichTextEditor = ({ content, onChange }: RichTextEditorProps) => {
     return null;
   }
 
+  const currentFontSize = editor.getAttributes('textStyle').fontSize || '';
+  const currentColor = editor.getAttributes('textStyle').color || '';
+
   return (
     <div className="border rounded-lg overflow-hidden">
       {/* Toolbar */}
@@ -161,6 +243,89 @@ const RichTextEditor = ({ content, onChange }: RichTextEditorProps) => {
         >
           <Code className="h-4 w-4" />
         </Button>
+
+        <div className="w-px h-6 bg-border mx-1" />
+
+        {/* Font Size */}
+        <Popover>
+          <PopoverTrigger asChild>
+            <Button type="button" variant="ghost" size="sm" className="gap-1">
+              <Type className="h-4 w-4" />
+              <span className="text-xs hidden sm:inline">Size</span>
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="w-40 p-2">
+            <div className="space-y-1">
+              {fontSizes.map((size) => (
+                <Button
+                  key={size.value}
+                  type="button"
+                  variant={currentFontSize === size.value ? 'secondary' : 'ghost'}
+                  size="sm"
+                  className="w-full justify-start"
+                  onClick={() => (editor.commands as any).setFontSize(size.value)}
+                >
+                  <span style={{ fontSize: size.value }}>{size.label}</span>
+                </Button>
+              ))}
+              <Button
+                type="button"
+                variant="ghost"
+                size="sm"
+                className="w-full justify-start text-muted-foreground"
+                onClick={() => (editor.commands as any).unsetFontSize()}
+              >
+                Reset
+              </Button>
+            </div>
+          </PopoverContent>
+        </Popover>
+
+        {/* Text Color */}
+        <Popover>
+          <PopoverTrigger asChild>
+            <Button type="button" variant="ghost" size="sm" className="gap-1">
+              <Palette className="h-4 w-4" />
+              <span className="text-xs hidden sm:inline">Color</span>
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="w-48 p-3">
+            <div className="grid grid-cols-5 gap-2 mb-3">
+              {colors.map((color) => (
+                <button
+                  key={color.value || 'default'}
+                  type="button"
+                  className={`w-7 h-7 rounded-full border-2 transition-all ${
+                    currentColor === color.value 
+                      ? 'ring-2 ring-primary ring-offset-2' 
+                      : 'hover:scale-110'
+                  }`}
+                  style={{ 
+                    backgroundColor: color.value || '#ffffff',
+                    borderColor: color.value ? 'transparent' : '#e5e7eb'
+                  }}
+                  onClick={() => {
+                    if (color.value) {
+                      editor.chain().focus().setColor(color.value).run();
+                    } else {
+                      editor.chain().focus().unsetColor().run();
+                    }
+                  }}
+                  title={color.label}
+                />
+              ))}
+            </div>
+            <div className="pt-2 border-t">
+              <Label className="text-xs text-muted-foreground">Custom Color</Label>
+              <Input
+                type="color"
+                className="h-8 w-full cursor-pointer p-1 mt-1"
+                value={currentColor || '#000000'}
+                onChange={(e) => editor.chain().focus().setColor(e.target.value).run()}
+              />
+            </div>
+          </PopoverContent>
+        </Popover>
 
         <div className="w-px h-6 bg-border mx-1" />
 
