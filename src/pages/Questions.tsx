@@ -50,7 +50,7 @@ const Questions = () => {
         title="FAQ | Frequently Asked Questions | MI Tuition"
         description="Find answers to common questions about MI Tuition services. Learn about our tutors, subjects offered, online and offline options, and how to get started."
         keywords="MI Tuition FAQ, tuition questions, POA tuition FAQ, MOB tuition FAQ, JC commerce tuition"
-        canonicalUrl="/questions"
+        canonicalUrl="/faq"
       />
       <FAQSchema faqs={faqs} />
       

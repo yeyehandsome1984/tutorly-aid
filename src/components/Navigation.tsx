@@ -26,7 +26,7 @@ const Navigation = () => {
     { to: "/", label: "Home" },
     { to: "/tutors", label: "Tutors" },
     { to: "/subjects", label: "Subjects" },
-    { to: "/questions", label: "FAQ" },
+    { to: "/faq", label: "FAQ" },
   ];
 
   return (
@@ -50,15 +50,9 @@ const Navigation = () => {
                 {link.label}
               </NavLink>
             ))}
-            {user ? (
-              <Button variant="secondary" size="sm" onClick={() => navigate("/questions")}>
-                My Account
-              </Button>
-            ) : (
-              <Button variant="secondary" size="sm" onClick={() => navigate("/auth")}>
-                Login
-              </Button>
-            )}
+            <Button variant="secondary" size="sm" onClick={() => navigate("/auth")}>
+              {user ? "My Account" : "Login"}
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -86,15 +80,9 @@ const Navigation = () => {
                   {link.label}
                 </NavLink>
               ))}
-              {user ? (
-                <Button variant="secondary" size="sm" className="w-full" onClick={() => navigate("/questions")}>
-                  My Account
-                </Button>
-              ) : (
-                <Button variant="secondary" size="sm" className="w-full" onClick={() => navigate("/auth")}>
-                  Login
-                </Button>
-              )}
+              <Button variant="secondary" size="sm" className="w-full" onClick={() => navigate("/auth")}>
+                {user ? "My Account" : "Login"}
+              </Button>
             </div>
           </div>
         )}

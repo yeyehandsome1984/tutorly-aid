@@ -128,7 +128,7 @@ const Tutors = () => {
           </div>
           <p className="mt-6 text-sm text-muted-foreground">
             Have questions? Check our{" "}
-            <Link to="/questions" className="text-primary hover:underline font-medium">
+            <Link to="/faq" className="text-primary hover:underline font-medium">
               FAQ page
             </Link>
           </p>

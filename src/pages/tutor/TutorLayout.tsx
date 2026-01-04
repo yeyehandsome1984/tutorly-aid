@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
-import { MessageSquare } from "lucide-react";
 
 const TutorLayout = () => {
   const navigate = useNavigate();
@@ -59,14 +58,6 @@ const TutorLayout = () => {
               <Link to="/tutor" className="text-xl font-bold">
                 Tutor Dashboard
               </Link>
-              <div className="flex gap-4">
-                <Link to="/tutor/questions">
-                  <Button variant="ghost" size="sm">
-                    <MessageSquare className="mr-2 h-4 w-4" />
-                    Questions
-                  </Button>
-                </Link>
-              </div>
             </div>
             <Button onClick={handleLogout} variant="outline" size="sm">
               Logout
