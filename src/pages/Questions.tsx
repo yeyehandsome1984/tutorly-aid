@@ -28,16 +28,6 @@ const faqs = [
     answer:
       "You can reach us via WhatsApp at +65 8511 6415 or email us at yichenue@gmail.com. We respond to enquiries promptly.",
   },
-  {
-    question: "What makes MI Tuition different?",
-    answer:
-      "We offer small class sizes for personalized attention, experienced tutors who are ex-MI students and ex-MOE teachers specialized in JC commerce subjects, and flexible online/offline options for continuous learning support.",
-  },
-  {
-    question: "How do I sign up for tuition?",
-    answer:
-      "Simply contact us via WhatsApp at +65 8511 6415 or email us at yichenue@gmail.com. We'll discuss your learning needs and arrange a suitable schedule for you.",
-  },
 ];
 
 const Questions = () => {
