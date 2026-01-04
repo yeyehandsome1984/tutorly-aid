@@ -28,6 +28,11 @@ const faqs = [
     answer:
       "You can reach us via WhatsApp at +65 8511 6415 or email us at yichenue@gmail.com. We respond to enquiries promptly.",
   },
+  {
+    question: "Can I arrange a trial lesson? What about pricing?",
+    answer:
+      "Yes, we can arrange a trial lesson for you. Pricing will be discussed through WhatsApp or call separately.",
+  },
 ];
 
 const Questions = () => {
