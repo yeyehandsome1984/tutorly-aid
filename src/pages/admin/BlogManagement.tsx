@@ -26,7 +26,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { toast } from "sonner";
-import { Plus, Pencil, Trash2, Eye, EyeOff, MapPin, Download, Copy, CheckCircle } from "lucide-react";
+import { Plus, Pencil, Trash2, Eye, EyeOff, MapPin, Download, Copy, CheckCircle, Sparkles } from "lucide-react";
 import RichTextEditor from "@/components/RichTextEditor";
 import { generateSitemapXml, downloadSitemapXml, copySitemapToClipboard } from "@/lib/sitemap-generator";
 import { sanitizeBlogContent } from "@/lib/content-sanitizer";
@@ -145,6 +145,42 @@ const BlogManagement = () => {
     onError: (error) => toast.error(`Error: ${error.message}`),
   });
 
+  const sanitizeAllMutation = useMutation({
+    mutationFn: async () => {
+      if (!posts || posts.length === 0) {
+        throw new Error("No posts to sanitize");
+      }
+
+      let sanitizedCount = 0;
+      
+      for (const post of posts) {
+        const sanitizedContent = sanitizeBlogContent(post.content);
+        
+        // Only update if content changed
+        if (sanitizedContent !== post.content) {
+          const { error } = await supabase
+            .from("blog_posts")
+            .update({ content: sanitizedContent })
+            .eq("id", post.id);
+          
+          if (error) throw error;
+          sanitizedCount++;
+        }
+      }
+      
+      return sanitizedCount;
+    },
+    onSuccess: (count) => {
+      queryClient.invalidateQueries({ queryKey: ["admin-blog-posts"] });
+      if (count > 0) {
+        toast.success(`Sanitized ${count} blog post${count > 1 ? 's' : ''}`);
+      } else {
+        toast.info("All posts are already clean - no changes needed");
+      }
+    },
+    onError: (error) => toast.error(`Error: ${error.message}`),
+  });
+
   const resetForm = () => {
     setFormData({
       slug: "",
@@ -238,12 +274,25 @@ const BlogManagement = () => {
           <h1 className="text-3xl font-bold">Blog Management</h1>
           <p className="text-muted-foreground">Create and manage blog posts with rich text editing</p>
         </div>
-        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-          <DialogTrigger asChild>
-            <Button onClick={() => resetForm()}>
-              <Plus className="h-4 w-4 mr-2" /> Add Blog Post
-            </Button>
-          </DialogTrigger>
+        <div className="flex gap-2">
+          <Button
+            variant="outline"
+            onClick={() => {
+              if (confirm("This will clean up inline styles from all blog posts. Continue?")) {
+                sanitizeAllMutation.mutate();
+              }
+            }}
+            disabled={sanitizeAllMutation.isPending || !posts?.length}
+          >
+            <Sparkles className="h-4 w-4 mr-2" />
+            {sanitizeAllMutation.isPending ? "Sanitizing..." : "Sanitize All"}
+          </Button>
+          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+            <DialogTrigger asChild>
+              <Button onClick={() => resetForm()}>
+                <Plus className="h-4 w-4 mr-2" /> Add Blog Post
+              </Button>
+            </DialogTrigger>
           <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle>
@@ -363,6 +412,7 @@ const BlogManagement = () => {
             </form>
           </DialogContent>
         </Dialog>
+      </div>
       </div>
 
       <Card>
