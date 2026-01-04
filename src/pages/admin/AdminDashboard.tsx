@@ -1,5 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { BookOpen, Users, List, FileText } from "lucide-react";
+import { BookOpen, Users, List, FileText, MessageSquare, Newspaper } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const AdminDashboard = () => {
@@ -38,6 +38,20 @@ const AdminDashboard = () => {
       icon: FileText,
       link: "/admin/content",
       color: "text-orange-500",
+    },
+    {
+      title: "Blog Posts",
+      description: "Create and manage blog articles",
+      icon: Newspaper,
+      link: "/admin/blog",
+      color: "text-pink-500",
+    },
+    {
+      title: "Testimonials",
+      description: "Manage student testimonials",
+      icon: MessageSquare,
+      link: "/admin/testimonials",
+      color: "text-yellow-500",
     },
   ];
 
