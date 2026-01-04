@@ -13,7 +13,7 @@ const PRODUCTION_URL = "https://micommercestreamtuition.com";
 
 const SEO = ({
   title = "MI Tuition - Expert JC Tuition for POA, MOB, Mathematics & Economics | Singapore",
-  description = "Premier Singapore tuition for JC students. Expert tutors for Principles of Accounting (POA), Management of Business (MOB), Mathematics, and Economics. Ask questions online, track progress, and excel in your studies.",
+  description = "Quality tuition to commerce stream A-level/JC subject including Principle of Accounting (POA), Management of Business (MOB), Economics and Mathematics. Online & offline classes. Targeting both private and MI students.",
   keywords = "Singapore tuition, POA tuition, MOB tuition, JC math tutor, economics tutor, ask questions online, JC tuition Singapore, accounting tutor, mathematics tuition",
   canonicalUrl,
   ogImage = "https://micommercestreamtuition.com/og-image.png",
