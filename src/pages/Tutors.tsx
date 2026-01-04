@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Phone } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Phone, User } from "lucide-react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import SEO from "@/components/SEO";
@@ -98,12 +99,20 @@ const Tutors = () => {
             
             return (
             <Card key={tutor.id} className="shadow-card hover:shadow-elevated transition-shadow">
-              <CardHeader>
-                <CardTitle className="text-2xl">
-                  {mainName}
-                  {titlePart && <span className="text-base font-normal text-muted-foreground">{titlePart}</span>}
-                </CardTitle>
-                <CardDescription className="text-base mt-2 leading-relaxed">{tutor.introduction}</CardDescription>
+              <CardHeader className="flex flex-row items-start gap-4">
+                <Avatar className="h-16 w-16 shrink-0">
+                  <AvatarImage src="" alt={tutor.name} />
+                  <AvatarFallback className="bg-muted text-muted-foreground">
+                    <User className="h-8 w-8" />
+                  </AvatarFallback>
+                </Avatar>
+                <div className="flex-1 min-w-0">
+                  <CardTitle className="text-xl">
+                    {mainName}
+                    {titlePart && <span className="text-sm font-normal text-muted-foreground">{titlePart}</span>}
+                  </CardTitle>
+                  <CardDescription className="text-sm mt-2 leading-relaxed">{tutor.introduction}</CardDescription>
+                </div>
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2">
