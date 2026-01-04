@@ -60,24 +60,10 @@ const testimonials: Testimonial[] = [
     rating: 5,
   },
   {
-    name: "Marcus T.",
-    subject: "MOB (Management of Business)",
-    achievement: "From failing to B grade",
-    quote: "Was struggling with MOB essay structure and analysis. After just 3 months of tuition, I went from F to B. The exam techniques taught were invaluable!",
-    rating: 5,
-  },
-  {
     name: "Wei Ling C.",
     subject: "POA (Principles of Accounting)",
     achievement: "92/100 in school exam",
     quote: "Scored 92 marks for my POA paper! The practice questions and clear explanations of accounting concepts really helped. 老师讲解得很清楚，容易理解！",
-    rating: 5,
-  },
-  {
-    name: "Jun Hao K.",
-    subject: "MOB (Management of Business)",
-    achievement: "Top in class for MOB",
-    quote: "Became top in class for MOB after joining the tuition. The notes are comprehensive and the exam strategies for answering MOB questions are super helpful!",
     rating: 5,
   },
 ];
@@ -129,7 +115,7 @@ const TestimonialsSchema = () => {
 
 const Testimonials = () => {
   return (
-    <section className="py-16 bg-muted">
+    <section className="py-8 bg-muted">
       <TestimonialsSchema />
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
@@ -139,7 +125,7 @@ const Testimonials = () => {
           Real testimonials from our POA and MOB students who achieved excellent results
         </p>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 max-w-6xl mx-auto">
           {testimonials.map((testimonial, idx) => (
             <Card key={idx} className="shadow-card hover:shadow-elevated transition-shadow">
               <CardContent className="pt-6">
