@@ -127,20 +127,15 @@ const Index = () => {
             Effective Tuition for A-Level commerce stream subjects, including <span className="whitespace-nowrap">POA（会计）</span>, <span className="whitespace-nowrap">MOB（商业）</span>, <span className="whitespace-nowrap">Mathematics（数学）</span>, and <span className="whitespace-nowrap">Economics（经济）</span>. Let's achieve academic excellence with dedicated team of tutors!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/auth">
-              <Button size="lg" variant="secondary">
-                Student Login
-              </Button>
-            </Link>
             <a href="https://wa.me/6585116415" target="_blank" rel="noopener noreferrer">
-              <Button size="lg" variant="hero">
-                <Phone className="mr-2 h-4 w-4" />
+              <Button size="lg" variant="hero" className="text-lg">
+                <Phone className="mr-2 h-5 w-5" />
                 WhatsApp Us
               </Button>
             </a>
             <a href="mailto:yichenue@gmail.com">
-              <Button size="lg" variant="hero">
-                <Mail className="mr-2 h-4 w-4" />
+              <Button size="lg" variant="hero" className="text-lg">
+                <Mail className="mr-2 h-5 w-5" />
                 Email Us
               </Button>
             </a>
