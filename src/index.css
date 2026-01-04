@@ -127,3 +127,13 @@ All colors MUST be HSL.
     box-shadow: var(--shadow-elevated);
   }
 }
+
+/* Blog content styling - ensure empty paragraphs show as line breaks */
+.prose p:empty {
+  min-height: 1em;
+  display: block;
+}
+
+.prose p {
+  margin-bottom: 1rem;
+}
