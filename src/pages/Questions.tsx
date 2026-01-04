@@ -48,9 +48,9 @@ const Questions = () => {
     <div className="min-h-screen bg-background">
       <SEO
         title="FAQ | Frequently Asked Questions | MI Tuition"
-        description="Find answers to common questions about MI Tuition services. Learn about our tutors, subjects offered, online and offline options, and how to get started."
-        keywords="MI Tuition FAQ, tuition questions, POA tuition FAQ, MOB tuition FAQ, JC commerce tuition"
-        canonicalUrl="/faq"
+        description="Find answers about MI Tuition for POA (9593), MOB (9587), H1/H2 Math, Economics (9570). 常见问题解答 - 专业A水准补习服务。Learn about our tutors, subjects, online & offline options."
+        keywords="A-level tuition, POA tuition, Commerce Stream, MOB tuition, JC math tutor, economics tutor, ask questions online, JC tuition Singapore, accounting tutor, mathematics tuition, Management of Business Tuition, Principle of accounting tuition, Syllabus 9593, syllabus 9570, syllabus 9587, syllabus 8843, H2 Math, H1 Math, H2 POA, H2 MOB, syllabus 7087, MI, Millennia Institute (MI), 补习, 会计, 商业, 数学, 经济, A水准, FAQ, 常见问题"
+        canonicalUrl="/questions"
       />
       <FAQSchema faqs={faqs} />
       
