@@ -203,13 +203,15 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Subjects We Offer</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-            {["HPrinciples of Accounting", "Management of Business", "Mathematics", "Economics"].map((subject, idx) => (
-              <Card key={idx} className="shadow-card hover:shadow-elevated transition-shadow">
-                <CardHeader>
-                  <CardTitle className="text-lg text-center">{subject}</CardTitle>
-                </CardHeader>
-              </Card>
-            ))}
+            {["H2 Principles of Accounting", "H2 Management of Business", "H1&2 Mathematics", "H1&2 Economics"].map(
+              (subject, idx) => (
+                <Card key={idx} className="shadow-card hover:shadow-elevated transition-shadow">
+                  <CardHeader>
+                    <CardTitle className="text-lg text-center">{subject}</CardTitle>
+                  </CardHeader>
+                </Card>
+              ),
+            )}
           </div>
           <div className="text-center mt-8">
             <Link to="/subjects">
