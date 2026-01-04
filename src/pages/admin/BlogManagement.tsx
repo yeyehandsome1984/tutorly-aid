@@ -285,7 +285,10 @@ const BlogManagement = () => {
               </div>
 
               <div>
-                <Label>Content *</Label>
+                <Label>Content (Visual Editor) *</Label>
+                <p className="text-xs text-muted-foreground mb-2">
+                  Use the toolbar to format text, add headings, lists, links, and images - no HTML needed!
+                </p>
                 <RichTextEditor
                   content={formData.content}
                   onChange={(content) => setFormData({ ...formData, content })}
