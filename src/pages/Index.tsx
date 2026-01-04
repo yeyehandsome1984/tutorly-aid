@@ -40,11 +40,6 @@ const faqs = [
     answer:
       "Yes, we can arrange a trial lesson for you. Pricing will be discussed through WhatsApp or call separately.",
   },
-  {
-    question: "What languages can lessons be conducted in?",
-    answer:
-      "We can conduct lessons in both English and Mandarin (Chinese). Two of our tutors are native Chinese speakers, and one is very fluent in Mandarin, so students can learn comfortably in their preferred language.",
-  },
 ];
 
 interface TutorPreview {
@@ -94,7 +89,7 @@ const Index = () => {
       icon: GraduationCap,
       title: "Quality and patient Tutors",
       description:
-        "Learn from experienced tutor or top students from respective subjects. Tutors are bilingual, so lesson can be conducted in English or Mandarin(中文）",
+        "Learn from experienced tutor or top students from respective subjects. We are able to tutor in both English and 中文",
     },
     {
       icon: Headphones,
