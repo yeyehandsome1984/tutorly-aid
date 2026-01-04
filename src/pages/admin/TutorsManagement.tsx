@@ -1,12 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { toast } from "sonner";
-import { Plus, Edit, Trash2 } from "lucide-react";
+import { Plus, Edit, Trash2, Upload, User } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -20,6 +21,7 @@ interface Tutor {
   id: string;
   name: string;
   introduction: string;
+  photo_url: string | null;
 }
 
 const TutorsManagement = () => {
@@ -27,7 +29,9 @@ const TutorsManagement = () => {
   const [loading, setLoading] = useState(true);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editingTutor, setEditingTutor] = useState<Tutor | null>(null);
-  const [formData, setFormData] = useState({ name: "", introduction: "" });
+  const [formData, setFormData] = useState({ name: "", introduction: "", photo_url: "" });
+  const [uploading, setUploading] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     fetchTutors();
@@ -52,10 +56,14 @@ const TutorsManagement = () => {
   const handleOpenDialog = (tutor?: Tutor) => {
     if (tutor) {
       setEditingTutor(tutor);
-      setFormData({ name: tutor.name, introduction: tutor.introduction });
+      setFormData({ 
+        name: tutor.name, 
+        introduction: tutor.introduction,
+        photo_url: tutor.photo_url || ""
+      });
     } else {
       setEditingTutor(null);
-      setFormData({ name: "", introduction: "" });
+      setFormData({ name: "", introduction: "", photo_url: "" });
     }
     setDialogOpen(true);
   };
@@ -63,26 +71,73 @@ const TutorsManagement = () => {
   const handleCloseDialog = () => {
     setDialogOpen(false);
     setEditingTutor(null);
-    setFormData({ name: "", introduction: "" });
+    setFormData({ name: "", introduction: "", photo_url: "" });
+  };
+
+  const handlePhotoUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    // Validate file type
+    if (!file.type.startsWith('image/')) {
+      toast.error("Please upload an image file");
+      return;
+    }
+
+    // Validate file size (max 5MB)
+    if (file.size > 5 * 1024 * 1024) {
+      toast.error("Image size should be less than 5MB");
+      return;
+    }
+
+    setUploading(true);
+    try {
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${crypto.randomUUID()}.${fileExt}`;
+      const filePath = `${fileName}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from('tutor-photos')
+        .upload(filePath, file);
+
+      if (uploadError) throw uploadError;
+
+      const { data: { publicUrl } } = supabase.storage
+        .from('tutor-photos')
+        .getPublicUrl(filePath);
+
+      setFormData({ ...formData, photo_url: publicUrl });
+      toast.success("Photo uploaded successfully");
+    } catch (error: any) {
+      toast.error("Failed to upload photo: " + error.message);
+    } finally {
+      setUploading(false);
+    }
   };
 
   const handleSubmit = async () => {
     if (!formData.name || !formData.introduction) {
-      toast.error("Please fill in all fields");
+      toast.error("Please fill in all required fields");
       return;
     }
 
     try {
+      const dataToSave = {
+        name: formData.name,
+        introduction: formData.introduction,
+        photo_url: formData.photo_url || null
+      };
+
       if (editingTutor) {
         const { error } = await supabase
           .from("tutors")
-          .update(formData)
+          .update(dataToSave)
           .eq("id", editingTutor.id);
 
         if (error) throw error;
         toast.success("Tutor updated successfully");
       } else {
-        const { error } = await supabase.from("tutors").insert([formData]);
+        const { error } = await supabase.from("tutors").insert([dataToSave]);
 
         if (error) throw error;
         toast.success("Tutor added successfully");
@@ -128,7 +183,15 @@ const TutorsManagement = () => {
           <Card key={tutor.id}>
             <CardHeader>
               <CardTitle className="flex justify-between items-center">
-                <span>{tutor.name}</span>
+                <div className="flex items-center gap-3">
+                  <Avatar className="h-10 w-10">
+                    <AvatarImage src={tutor.photo_url || ""} alt={tutor.name} />
+                    <AvatarFallback>
+                      <User className="h-5 w-5" />
+                    </AvatarFallback>
+                  </Avatar>
+                  <span>{tutor.name}</span>
+                </div>
                 <div className="flex gap-2">
                   <Button
                     variant="ghost"
@@ -155,7 +218,7 @@ const TutorsManagement = () => {
       </div>
 
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-        <DialogContent>
+        <DialogContent className="max-w-md">
           <DialogHeader>
             <DialogTitle>
               {editingTutor ? "Edit Tutor" : "Add New Tutor"}
@@ -168,8 +231,34 @@ const TutorsManagement = () => {
           </DialogHeader>
 
           <div className="space-y-4">
+            <div className="flex flex-col items-center gap-3">
+              <Avatar className="h-24 w-24">
+                <AvatarImage src={formData.photo_url} alt="Tutor photo" />
+                <AvatarFallback className="bg-muted">
+                  <User className="h-12 w-12 text-muted-foreground" />
+                </AvatarFallback>
+              </Avatar>
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                onChange={handlePhotoUpload}
+                className="hidden"
+              />
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={() => fileInputRef.current?.click()}
+                disabled={uploading}
+              >
+                <Upload className="mr-2 h-4 w-4" />
+                {uploading ? "Uploading..." : "Upload Photo"}
+              </Button>
+            </div>
+
             <div>
-              <Label htmlFor="name">Name</Label>
+              <Label htmlFor="name">Name *</Label>
               <Input
                 id="name"
                 value={formData.name}
@@ -181,7 +270,7 @@ const TutorsManagement = () => {
             </div>
 
             <div>
-              <Label htmlFor="introduction">Introduction</Label>
+              <Label htmlFor="introduction">Introduction *</Label>
               <Textarea
                 id="introduction"
                 value={formData.introduction}
@@ -198,7 +287,7 @@ const TutorsManagement = () => {
             <Button variant="outline" onClick={handleCloseDialog}>
               Cancel
             </Button>
-            <Button onClick={handleSubmit}>
+            <Button onClick={handleSubmit} disabled={uploading}>
               {editingTutor ? "Update" : "Add"}
             </Button>
           </DialogFooter>
