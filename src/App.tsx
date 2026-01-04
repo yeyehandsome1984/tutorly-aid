@@ -16,8 +16,6 @@ import SubjectsManagement from "./pages/admin/SubjectsManagement";
 import TopicsManagement from "./pages/admin/TopicsManagement";
 import ContentManagement from "./pages/admin/ContentManagement";
 import TutorSubjectsManagement from "./pages/admin/TutorSubjectsManagement";
-import TutorLayout from "./pages/tutor/TutorLayout";
-import TutorDashboard from "./pages/tutor/TutorDashboard";
 import NotFound from "./pages/NotFound";
 import Navigation from "./components/Navigation";
 import AuthRecoveryRedirect from "./components/AuthRecoveryRedirect";
@@ -46,9 +44,6 @@ const App = () => (
               <Route path="topics" element={<TopicsManagement />} />
               <Route path="content" element={<ContentManagement />} />
               <Route path="tutor-subjects" element={<TutorSubjectsManagement />} />
-            </Route>
-            <Route path="/tutor" element={<TutorLayout />}>
-              <Route index element={<TutorDashboard />} />
             </Route>
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
