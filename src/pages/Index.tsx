@@ -40,6 +40,11 @@ const faqs = [
     answer:
       "Yes, we can arrange a trial lesson for you. Pricing will be discussed through WhatsApp or call separately.",
   },
+  {
+    question: "What languages can lessons be conducted in?",
+    answer:
+      "We can conduct lessons in both English and Mandarin (Chinese). Two of our tutors are native Chinese speakers, and one is very fluent in Mandarin, so students can learn comfortably in their preferred language.",
+  },
 ];
 
 interface TutorPreview {
