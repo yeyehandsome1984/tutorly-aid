@@ -109,7 +109,7 @@ const Tutors = () => {
                 <div className="flex-1 min-w-0">
                   <CardTitle className="text-xl">
                     {mainName}
-                    {titlePart && <span className="text-sm font-normal text-muted-foreground">{titlePart}</span>}
+                    {titlePart && <span className="text-sm font-semibold text-muted-foreground">{titlePart}</span>}
                   </CardTitle>
                   <CardDescription className="text-sm mt-2 leading-relaxed">{tutor.introduction}</CardDescription>
                 </div>
