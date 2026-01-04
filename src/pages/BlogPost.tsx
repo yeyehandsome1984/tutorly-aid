@@ -1,4 +1,5 @@
 import { useParams, Link, Navigate } from "react-router-dom";
+import { useMemo } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Calendar, Clock, ArrowLeft, Phone } from "lucide-react";
@@ -6,6 +7,7 @@ import SEO from "@/components/SEO";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { optimizeHtmlImages } from "@/lib/image-optimizer";
 
 interface BlogPostData {
   id: string;
@@ -100,6 +102,11 @@ const BlogPost = () => {
     return <Navigate to="/blog" replace />;
   }
 
+  // Memoize optimized content to avoid re-processing on every render
+  const optimizedContent = useMemo(() => {
+    return optimizeHtmlImages(post.content);
+  }, [post.content]);
+
   return (
     <div className="min-h-screen bg-background">
       <SEO
@@ -160,8 +167,8 @@ const BlogPost = () => {
       <section className="py-12">
         <div className="container mx-auto px-4">
           <div 
-            className="max-w-3xl mx-auto prose prose-lg prose-p:mb-4 prose-p:leading-relaxed prose-headings:mt-8 prose-headings:mb-4 prose-ul:my-4 prose-ol:my-4 prose-li:my-1 [&>p]:mb-4 [&>p:empty]:min-h-[1em] [&>p:empty]:mb-2 [&_img]:rounded-lg [&_img]:max-w-full"
-            dangerouslySetInnerHTML={{ __html: post.content.replace(/<img /g, '<img loading="lazy" ') }}
+            className="max-w-3xl mx-auto prose prose-lg prose-p:mb-4 prose-p:leading-relaxed prose-headings:mt-8 prose-headings:mb-4 prose-ul:my-4 prose-ol:my-4 prose-li:my-1 [&>p]:mb-4 [&>p:empty]:min-h-[1em] [&>p:empty]:mb-2 [&_img]:rounded-lg [&_img]:max-w-full [&_picture]:block [&_picture]:my-4"
+            dangerouslySetInnerHTML={{ __html: optimizedContent }}
           />
         </div>
       </section>
