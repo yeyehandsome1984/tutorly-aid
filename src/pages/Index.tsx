@@ -136,11 +136,7 @@ const Index = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="https://wa.me/6585116415" target="_blank" rel="noopener noreferrer">
-              <Button
-                size="lg"
-                variant="secondary"
-                className="text-lg"
-              >
+              <Button size="lg" variant="secondary" className="text-lg">
                 <Phone className="mr-2 h-5 w-5" />
                 WhatsApp Us
               </Button>
@@ -271,9 +267,7 @@ const Index = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-foreground">
               Ready to Excel in Your Studies?
             </h2>
-            <p className="text-lg mb-8 max-w-2xl mx-auto text-primary-foreground/90">
-              Join hundreds of students who have improved their grades with our expert tuition
-            </p>
+            <p className="text-lg mb-8 max-w-2xl mx-auto text-primary-foreground/90">Join us for a fun journey</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="https://wa.me/6585116415" target="_blank" rel="noopener noreferrer">
                 <Button size="lg" variant="default">
