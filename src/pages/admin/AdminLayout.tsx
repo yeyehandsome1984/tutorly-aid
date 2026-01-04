@@ -2,7 +2,7 @@ import { Outlet, Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
-import { BookOpen, Users, List, FileText, LogOut, Newspaper, MessageSquare } from "lucide-react";
+import { BookOpen, Users, List, FileText, LogOut, Newspaper, MessageSquare, MapPin } from "lucide-react";
 
 const AdminLayout = () => {
   const navigate = useNavigate();
@@ -107,6 +107,12 @@ const AdminLayout = () => {
                   <Button variant="ghost" size="sm">
                     <MessageSquare className="mr-2 h-4 w-4" />
                     Testimonials
+                  </Button>
+                </Link>
+                <Link to="/admin/sitemap">
+                  <Button variant="ghost" size="sm">
+                    <MapPin className="mr-2 h-4 w-4" />
+                    Sitemap
                   </Button>
                 </Link>
               </div>
