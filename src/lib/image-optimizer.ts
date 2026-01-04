@@ -87,6 +87,44 @@ export function optimizeHtmlImages(html: string): string {
 }
 
 /**
+ * Normalizes text colors in HTML content to ensure consistency
+ * Removes inline color styles that may cause inconsistency
+ */
+export function normalizeHtmlColors(html: string): string {
+  if (!html) return html;
+
+  let normalizedHtml = html;
+
+  // Remove inline color styles from table cells and paragraphs (keep structure)
+  normalizedHtml = normalizedHtml.replace(
+    /style="[^"]*color:\s*(?:rgb\([^)]+\)|#[a-fA-F0-9]{3,6}|[a-z]+)[^"]*"/gi,
+    (match) => {
+      // Keep other styles but remove color
+      const withoutColor = match.replace(/color:\s*(?:rgb\([^)]+\)|#[a-fA-F0-9]{3,6}|[a-z]+);?\s*/gi, '');
+      return withoutColor === 'style=""' ? '' : withoutColor;
+    }
+  );
+
+  // Remove font color attributes (legacy HTML)
+  normalizedHtml = normalizedHtml.replace(/\s*color=["'][^"']*["']/gi, '');
+
+  // Normalize table structure
+  normalizedHtml = normalizedHtml.replace(/<table([^>]*)>/gi, '<table$1>');
+  
+  return normalizedHtml;
+}
+
+/**
+ * Combines all HTML optimizations
+ */
+export function optimizeBlogContent(html: string): string {
+  let optimized = html;
+  optimized = normalizeHtmlColors(optimized);
+  optimized = optimizeHtmlImages(optimized);
+  return optimized;
+}
+
+/**
  * Generates srcset for responsive images
  */
 export function generateSrcSet(src: string, widths: number[] = [400, 800, 1200]): string {
