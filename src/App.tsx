@@ -9,6 +9,8 @@ import Tutors from "./pages/Tutors";
 import Subjects from "./pages/Subjects";
 import Auth from "./pages/Auth";
 import FAQ from "./pages/Questions";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import AdminLayout from "./pages/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import TutorsManagement from "./pages/admin/TutorsManagement";
@@ -37,6 +39,8 @@ const App = () => (
             <Route path="/subjects" element={<Subjects />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/faq" element={<FAQ />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/admin" element={<AdminLayout />}>
               <Route index element={<AdminDashboard />} />
               <Route path="tutors" element={<TutorsManagement />} />
