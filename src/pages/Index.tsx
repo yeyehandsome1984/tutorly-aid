@@ -123,8 +123,8 @@ const Index = () => {
             Excel in Your JC Commerce Stream with Excellent Tuition Team
           </h1>
           <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto text-white/95 drop-shadow-md">
-            Effective Tuition for A-Level commerce stream subjects, including POA, MOB, Mathematics, and Economics.
-            Let's achieve academic excellence with dedicated team of tutors!
+            Effective Tuition for A-Level commerce stream subjects, including POA（会计）, MOB（商业）,
+            Mathematics(数学）, and Economics（经济）. Let's achieve academic excellence with dedicated team of tutors!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center px-4 sm:px-0">
             <Link to="/auth" className="w-full sm:w-auto">
