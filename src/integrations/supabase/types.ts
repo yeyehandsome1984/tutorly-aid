@@ -207,51 +207,6 @@ export type Database = {
           },
         ]
       }
-      trial_bookings: {
-        Row: {
-          contact_number: string
-          created_at: string
-          current_school: string | null
-          email: string | null
-          id: string
-          message: string | null
-          preferred_date: string
-          preferred_time: string
-          status: string
-          student_name: string
-          subject: string
-          updated_at: string
-        }
-        Insert: {
-          contact_number: string
-          created_at?: string
-          current_school?: string | null
-          email?: string | null
-          id?: string
-          message?: string | null
-          preferred_date: string
-          preferred_time: string
-          status?: string
-          student_name: string
-          subject: string
-          updated_at?: string
-        }
-        Update: {
-          contact_number?: string
-          created_at?: string
-          current_school?: string | null
-          email?: string | null
-          id?: string
-          message?: string | null
-          preferred_date?: string
-          preferred_time?: string
-          status?: string
-          student_name?: string
-          subject?: string
-          updated_at?: string
-        }
-        Relationships: []
-      }
       tutor_subjects: {
         Row: {
           created_at: string | null
