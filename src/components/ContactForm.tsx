@@ -89,6 +89,19 @@ export function ContactForm() {
 
       if (error) throw error;
 
+      // Send email notification (don't block on failure)
+      supabase.functions.invoke("send-inquiry-notification", {
+        body: {
+          name: data.name,
+          email: data.email,
+          phone: data.phone || null,
+          subject: data.subject,
+          message: data.message,
+        },
+      }).catch((err) => {
+        console.error("Failed to send notification email:", err);
+      });
+
       toast.success("Thank you for your message! We'll get back to you soon.");
       reset();
     } catch (error: any) {

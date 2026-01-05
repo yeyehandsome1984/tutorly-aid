@@ -1,6 +1,6 @@
 import { ContactForm } from "@/components/ContactForm";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Mail, Phone } from "lucide-react";
+import { Mail, Phone, MessageCircle } from "lucide-react";
 
 const Contact = () => {
   return (
@@ -49,6 +49,20 @@ const Contact = () => {
                 <div>
                   <p className="font-medium">Phone</p>
                   <a href="tel:+6585116415" className="text-muted-foreground hover:text-primary transition-colors">
+                    +65 8511 6415
+                  </a>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <MessageCircle className="h-5 w-5 text-primary mt-0.5" />
+                <div>
+                  <p className="font-medium">WhatsApp</p>
+                  <a
+                    href="https://wa.me/6585116415"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
                     +65 8511 6415
                   </a>
                 </div>
