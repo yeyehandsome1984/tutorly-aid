@@ -7,6 +7,7 @@ import { HelmetProvider } from "react-helmet-async";
 import Index from "./pages/Index";
 import Tutors from "./pages/Tutors";
 import Subjects from "./pages/Subjects";
+import Contact from "./pages/Contact";
 import Auth from "./pages/Auth";
 import FAQ from "./pages/Questions";
 import Blog from "./pages/Blog";
@@ -21,6 +22,7 @@ import TutorSubjectsManagement from "./pages/admin/TutorSubjectsManagement";
 import BlogManagement from "./pages/admin/BlogManagement";
 import TestimonialsManagement from "./pages/admin/TestimonialsManagement";
 import SitemapManagement from "./pages/admin/SitemapManagement";
+import InquiriesManagement from "./pages/admin/InquiriesManagement";
 import NotFound from "./pages/NotFound";
 import Navigation from "./components/Navigation";
 import AuthRecoveryRedirect from "./components/AuthRecoveryRedirect";
@@ -42,6 +44,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/tutors" element={<Tutors />} />
             <Route path="/subjects" element={<Subjects />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/blog" element={<Blog />} />
@@ -56,6 +59,7 @@ const App = () => (
               <Route path="blog" element={<BlogManagement />} />
               <Route path="testimonials" element={<TestimonialsManagement />} />
               <Route path="sitemap" element={<SitemapManagement />} />
+              <Route path="inquiries" element={<InquiriesManagement />} />
             </Route>
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
