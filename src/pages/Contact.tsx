@@ -7,12 +7,10 @@ const Contact = () => {
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-12">
         <div className="mb-12 text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-foreground mb-4">
-            Contact Us
-          </h1>
+          <h1 className="text-4xl font-bold tracking-tight text-foreground mb-4">Contact Us</h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Have questions about our tutoring services? We'd love to hear from you. 
-            Send us a message and we'll respond as soon as possible.
+            Have questions about our tutoring services? We'd love to hear from you. Send us a message and we'll respond
+            as soon as possible.
           </p>
         </div>
 
@@ -21,9 +19,7 @@ const Contact = () => {
             <Card>
               <CardHeader>
                 <CardTitle>Send us a message</CardTitle>
-                <CardDescription>
-                  Fill out the form below and we'll get back to you within 24 hours.
-                </CardDescription>
+                <CardDescription>Fill out the form below and we'll get back to you within 24 hours.</CardDescription>
               </CardHeader>
               <CardContent>
                 <ContactForm />
@@ -41,11 +37,11 @@ const Contact = () => {
                   <Mail className="h-5 w-5 text-primary mt-0.5" />
                   <div>
                     <p className="font-medium">Email</p>
-                    <a 
-                      href="mailto:info@example.com" 
+                    <a
+                      href="mailto:info@example.com"
                       className="text-muted-foreground hover:text-primary transition-colors"
                     >
-                      info@example.com
+                      yichenue@gmail.com
                     </a>
                   </div>
                 </div>
@@ -53,11 +49,8 @@ const Contact = () => {
                   <Phone className="h-5 w-5 text-primary mt-0.5" />
                   <div>
                     <p className="font-medium">Phone</p>
-                    <a 
-                      href="tel:+1234567890" 
-                      className="text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      +1 (234) 567-890
+                    <a href="tel:+1234567890" className="text-muted-foreground hover:text-primary transition-colors">
+                      +65 8511 6415
                     </a>
                   </div>
                 </div>
@@ -66,7 +59,8 @@ const Contact = () => {
                   <div>
                     <p className="font-medium">Location</p>
                     <p className="text-muted-foreground">
-                      123 Education Street<br />
+                      123 Education Street
+                      <br />
                       Learning City, LC 12345
                     </p>
                   </div>
