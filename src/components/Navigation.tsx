@@ -28,6 +28,7 @@ const Navigation = () => {
     { to: "/subjects", label: "Subjects" },
     { to: "/blog", label: "Blog" },
     { to: "/faq", label: "FAQ" },
+    { to: "/contact", label: "Contact" },
   ];
 
   return (
