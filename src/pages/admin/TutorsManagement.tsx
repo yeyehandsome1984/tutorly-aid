@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { toast } from "sonner";
-import { Plus, Edit, Trash2, Upload, User } from "lucide-react";
+import { Plus, Edit, Trash2, Upload, User, X } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -112,6 +112,16 @@ const TutorsManagement = () => {
       toast.error("Failed to upload photo: " + error.message);
     } finally {
       setUploading(false);
+      if (fileInputRef.current) {
+        fileInputRef.current.value = '';
+      }
+    }
+  };
+
+  const handleRemovePhoto = () => {
+    setFormData({ ...formData, photo_url: "" });
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
     }
   };
 
@@ -232,12 +242,25 @@ const TutorsManagement = () => {
 
           <div className="space-y-4">
             <div className="flex flex-col items-center gap-3">
-              <Avatar className="h-24 w-24">
-                <AvatarImage src={formData.photo_url} alt="Tutor photo" />
-                <AvatarFallback className="bg-muted">
-                  <User className="h-12 w-12 text-muted-foreground" />
-                </AvatarFallback>
-              </Avatar>
+              <div className="relative">
+                <Avatar className="h-24 w-24">
+                  <AvatarImage src={formData.photo_url} alt="Tutor photo" />
+                  <AvatarFallback className="bg-muted">
+                    <User className="h-12 w-12 text-muted-foreground" />
+                  </AvatarFallback>
+                </Avatar>
+                {formData.photo_url && (
+                  <Button
+                    type="button"
+                    variant="destructive"
+                    size="icon"
+                    className="absolute -top-2 -right-2 h-6 w-6 rounded-full"
+                    onClick={handleRemovePhoto}
+                  >
+                    <X className="h-3 w-3" />
+                  </Button>
+                )}
+              </div>
               <input
                 ref={fileInputRef}
                 type="file"
@@ -253,7 +276,7 @@ const TutorsManagement = () => {
                 disabled={uploading}
               >
                 <Upload className="mr-2 h-4 w-4" />
-                {uploading ? "Uploading..." : "Upload Photo"}
+                {uploading ? "Uploading..." : formData.photo_url ? "Replace Photo" : "Upload Photo"}
               </Button>
             </div>
 
