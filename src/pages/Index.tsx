@@ -181,7 +181,7 @@ const Index = () => {
             <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
               Our tutors provide best supports for your A-level Journey
             </p>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4 max-w-6xl mx-auto">
               {tutors.map((tutor) => (
                 <Card key={tutor.id} className="shadow-card">
                   <CardHeader>
