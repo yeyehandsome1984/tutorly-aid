@@ -64,7 +64,7 @@ const Index = () => {
 
   const fetchTutors = async () => {
     try {
-      const { data: tutorsData } = await supabase.from("tutors").select("*").order("name").limit(4);
+      const { data: tutorsData } = await supabase.from("tutors").select("*").order("name");
 
       const tutorsWithSubjects = await Promise.all(
         (tutorsData || []).map(async (tutor) => {
