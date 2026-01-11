@@ -181,16 +181,16 @@ const Index = () => {
             <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
               Our tutors provide best supports for your A-level Journey
             </p>
-            <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4 max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-3 max-w-6xl mx-auto">
               {tutors.map((tutor) => (
                 <Card key={tutor.id} className="shadow-card">
-                  <CardHeader>
-                    <CardTitle className="text-xl">{tutor.name}</CardTitle>
+                  <CardHeader className="p-3 pb-2">
+                    <CardTitle className="text-sm font-semibold leading-tight">{tutor.name}</CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <div className="flex flex-wrap gap-2">
+                  <CardContent className="p-3 pt-0">
+                    <div className="flex flex-wrap gap-1">
                       {tutor.subjects.map((subject, sidx) => (
-                        <Badge key={sidx} variant="secondary">
+                        <Badge key={sidx} variant="secondary" className="text-xs px-1.5 py-0">
                           {subject}
                         </Badge>
                       ))}
