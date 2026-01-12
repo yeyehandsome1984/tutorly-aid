@@ -183,20 +183,22 @@ const Index = () => {
             </p>
             <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-3 max-w-6xl mx-auto">
               {tutors.map((tutor) => (
-                <Card key={tutor.id} className="shadow-card">
-                  <CardHeader className="p-3 pb-2">
-                    <CardTitle className="text-sm font-semibold leading-tight">{tutor.name}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="p-3 pt-0">
-                    <div className="flex flex-wrap gap-1">
-                      {tutor.subjects.map((subject, sidx) => (
-                        <Badge key={sidx} variant="secondary" className="text-xs px-1.5 py-0">
-                          {subject}
-                        </Badge>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
+                <Link key={tutor.id} to="/tutors">
+                  <Card className="shadow-card hover:shadow-lg transition-shadow cursor-pointer h-full">
+                    <CardHeader className="p-3 pb-2">
+                      <CardTitle className="text-sm font-semibold leading-tight">{tutor.name}</CardTitle>
+                    </CardHeader>
+                    <CardContent className="p-3 pt-0">
+                      <div className="flex flex-wrap gap-1">
+                        {tutor.subjects.map((subject, sidx) => (
+                          <Badge key={sidx} variant="secondary" className="text-xs px-1.5 py-0">
+                            {subject}
+                          </Badge>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
               ))}
             </div>
             <div className="text-center mt-8">
